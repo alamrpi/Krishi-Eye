@@ -8,6 +8,7 @@ D:\Resources\Projects\KrishiEye\src\Services\Catalog\KrishiEye.Services.Catalog.
 D:\Resources\Projects\KrishiEye\src\Services\Catalog\KrishiEye.Services.Catalog.Application\obj\Debug\net9.0\KrishiEye.Services.Catalog.Application.AssemblyInfoInputs.cache
 D:\Resources\Projects\KrishiEye\src\Services\Catalog\KrishiEye.Services.Catalog.Application\obj\Debug\net9.0\KrishiEye.Services.Catalog.Application.AssemblyInfo.cs
 D:\Resources\Projects\KrishiEye\src\Services\Catalog\KrishiEye.Services.Catalog.Application\obj\Debug\net9.0\KrishiEye.Services.Catalog.Application.csproj.CoreCompileInputs.cache
+D:\Resources\Projects\KrishiEye\src\Services\Catalog\KrishiEye.Services.Catalog.Application\obj\Debug\net9.0\KrishiEye.Services.Catalog.Application.sourcelink.json
 D:\Resources\Projects\KrishiEye\src\Services\Catalog\KrishiEye.Services.Catalog.Application\obj\Debug\net9.0\KrishiEy.AC3A56D6.Up2Date
 D:\Resources\Projects\KrishiEye\src\Services\Catalog\KrishiEye.Services.Catalog.Application\obj\Debug\net9.0\KrishiEye.Services.Catalog.Application.dll
 D:\Resources\Projects\KrishiEye\src\Services\Catalog\KrishiEye.Services.Catalog.Application\obj\Debug\net9.0\refint\KrishiEye.Services.Catalog.Application.dll

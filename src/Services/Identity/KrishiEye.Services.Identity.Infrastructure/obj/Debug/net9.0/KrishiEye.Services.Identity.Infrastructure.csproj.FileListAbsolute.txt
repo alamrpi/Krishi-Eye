@@ -11,6 +11,7 @@ D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identit
 D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.Infrastructure\obj\Debug\net9.0\KrishiEye.Services.Identity.Infrastructure.AssemblyInfoInputs.cache
 D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.Infrastructure\obj\Debug\net9.0\KrishiEye.Services.Identity.Infrastructure.AssemblyInfo.cs
 D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.Infrastructure\obj\Debug\net9.0\KrishiEye.Services.Identity.Infrastructure.csproj.CoreCompileInputs.cache
+D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.Infrastructure\obj\Debug\net9.0\KrishiEye.Services.Identity.Infrastructure.sourcelink.json
 D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.Infrastructure\obj\Debug\net9.0\KrishiEy.AE0E1424.Up2Date
 D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.Infrastructure\obj\Debug\net9.0\KrishiEye.Services.Identity.Infrastructure.dll
 D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.Infrastructure\obj\Debug\net9.0\refint\KrishiEye.Services.Identity.Infrastructure.dll

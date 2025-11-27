@@ -7,6 +7,6 @@ public class MappingProfile : IRegister
 {
     public void Register(TypeAdapterConfig config)
     {
-        config.Scan(Assembly.GetExecutingAssembly());
+       // config.Scan(Assembly.GetExecutingAssembly());
     }
 }

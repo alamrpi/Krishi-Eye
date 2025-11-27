@@ -30,6 +30,10 @@ public class TransportRequest : BaseEntity
     public RequestStatus Status { get; private set; }
     public Guid? WinnerBidId { get; private set; }
     
+    // Payment information
+    public PaymentMethod PaymentMethod { get; private set; } = PaymentMethod.Cash;
+    public bool IsCashReceived { get; private set; } = false;
+    
     // Navigation properties
     public ICollection<TransportBid> Bids { get; private set; } = new List<TransportBid>();
     public JobAssignment? JobAssignment { get; private set; }
@@ -44,7 +48,8 @@ public class TransportRequest : BaseEntity
         string dropAddress,
         Location dropLocation,
         string goodsType,
-        decimal weightKg)
+        decimal weightKg,
+        PaymentMethod paymentMethod)
     {
         Id = Guid.NewGuid();
         RequesterId = requesterId;
@@ -55,6 +60,7 @@ public class TransportRequest : BaseEntity
         DropLocation = dropLocation;
         GoodsType = goodsType;
         WeightKg = weightKg;
+        PaymentMethod = paymentMethod;
         Status = RequestStatus.Open;
         
         // Domain event: Request created
@@ -82,7 +88,8 @@ public class TransportRequest : BaseEntity
         string dropThana,
         string dropPostalCode,
         string goodsType,
-        decimal weightKg)
+        decimal weightKg,
+        PaymentMethod paymentMethod = PaymentMethod.Cash)
     {
         // Guard clauses (Fail Fast Principle)
         if (requesterId == Guid.Empty)
@@ -116,7 +123,8 @@ public class TransportRequest : BaseEntity
             dropAddress,
             dropLocation,
             goodsType,
-            weightKg);
+            weightKg,
+            paymentMethod);
     }
 
     /// <summary>
@@ -180,6 +188,21 @@ public class TransportRequest : BaseEntity
         Status = RequestStatus.Completed;
         UpdateTimestamp();
         AddDomainEvent(new TransportRequestCompletedEvent(Id));
+    }
+
+    /// <summary>
+    /// Mark cash as received (for cash payments)
+    /// </summary>
+    public void MarkCashReceived()
+    {
+        if (PaymentMethod != PaymentMethod.Cash)
+            throw new InvalidOperationException("Cash receipt can only be marked for cash payments");
+
+        if (Status != RequestStatus.Completed)
+            throw new InvalidOperationException("Request must be completed before marking cash as received");
+
+        IsCashReceived = true;
+        UpdateTimestamp();
     }
 
     /// <summary>

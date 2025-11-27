@@ -151,6 +151,7 @@ D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identit
 D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.API\obj\Debug\net9.0\KrishiEye.Services.Identity.API.csproj.CoreCompileInputs.cache
 D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.API\obj\Debug\net9.0\KrishiEye.Services.Identity.API.MvcApplicationPartsAssemblyInfo.cs
 D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.API\obj\Debug\net9.0\KrishiEye.Services.Identity.API.MvcApplicationPartsAssemblyInfo.cache
+D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.API\obj\Debug\net9.0\KrishiEye.Services.Identity.API.sourcelink.json
 D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.API\obj\Debug\net9.0\rjimswa.dswa.cache.json
 D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.API\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
 D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.API\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json

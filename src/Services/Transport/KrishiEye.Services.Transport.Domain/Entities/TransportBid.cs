@@ -64,7 +64,7 @@ public class TransportBid : BaseEntity
     /// <summary>
     /// Accept this bid (called from TransportRequest aggregate)
     /// </summary>
-    internal void Accept()
+    public void Accept()
     {
         if (Status != BidStatus.Pending)
             throw new InvalidOperationException($"Cannot accept bid with status {Status}");
@@ -76,7 +76,7 @@ public class TransportBid : BaseEntity
     /// <summary>
     /// Reject this bid (called from TransportRequest aggregate)
     /// </summary>
-    internal void Reject()
+    public void Reject()
     {
         if (Status != BidStatus.Pending)
             throw new InvalidOperationException($"Cannot reject bid with status {Status}");

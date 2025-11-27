@@ -6,6 +6,7 @@ D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identit
 D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.Domain\obj\Debug\net9.0\KrishiEye.Services.Identity.Domain.AssemblyInfoInputs.cache
 D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.Domain\obj\Debug\net9.0\KrishiEye.Services.Identity.Domain.AssemblyInfo.cs
 D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.Domain\obj\Debug\net9.0\KrishiEye.Services.Identity.Domain.csproj.CoreCompileInputs.cache
+D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.Domain\obj\Debug\net9.0\KrishiEye.Services.Identity.Domain.sourcelink.json
 D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.Domain\obj\Debug\net9.0\KrishiEye.Services.Identity.Domain.dll
 D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.Domain\obj\Debug\net9.0\refint\KrishiEye.Services.Identity.Domain.dll
 D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.Domain\obj\Debug\net9.0\KrishiEye.Services.Identity.Domain.pdb

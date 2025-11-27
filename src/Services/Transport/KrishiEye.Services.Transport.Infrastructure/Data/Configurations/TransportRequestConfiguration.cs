@@ -25,99 +25,37 @@ public class TransportRequestConfiguration : IEntityTypeConfiguration<TransportR
         builder.Property(r => r.ScheduledTime)
             .IsRequired();
 
-        // Pickup location
-        builder.Property(r => r.PickupAddress)
-            .IsRequired()
-            .HasMaxLength(500);
-
-        // Value Object - Location for Pickup (Complete Bangladesh Address)
         builder.OwnsOne(r => r.PickupLocation, location =>
         {
-            location.Property(l => l.Latitude)
-                .HasColumnName("PickupLatitude")
-                .IsRequired()
-                .HasPrecision(9, 6);
+            location.Property(l => l.Latitude).HasColumnName("PickupLatitude").IsRequired().HasPrecision(9, 6);
+            location.Property(l => l.Longitude).HasColumnName("PickupLongitude").IsRequired().HasPrecision(9, 6);
+            location.Property(l => l.Division).HasColumnName("PickupDivision").IsRequired().HasMaxLength(50);
+            location.Property(l => l.District).HasColumnName("PickupDistrict").IsRequired().HasMaxLength(50);
+            location.Property(l => l.Thana).HasColumnName("PickupThana").IsRequired().HasMaxLength(50);
+            location.Property(l => l.PostalCode).HasColumnName("PickupPostalCode").HasMaxLength(10);
+            location.Property(l => l.AddressLine).HasColumnName("PickupAddressLine").IsRequired().HasMaxLength(500);
 
-            location.Property(l => l.Longitude)
-                .HasColumnName("PickupLongitude")
-                .IsRequired()
-                .HasPrecision(9, 6);
+            // CORRECT WAY: Define index on the owned properties here
+            location.HasIndex(l => new { l.Latitude, l.Longitude })
+                    .HasDatabaseName("IX_TransportRequests_PickupLocation");
 
-            location.Property(l => l.Division)
-                .HasColumnName("PickupDivision")
-                .IsRequired()
-                .HasMaxLength(50);
-
-            location.Property(l => l.District)
-                .HasColumnName("PickupDistrict")
-                .IsRequired()
-                .HasMaxLength(50);
-
-            location.Property(l => l.Thana)
-                .HasColumnName("PickupThana")
-                .IsRequired()
-                .HasMaxLength(50);
-
-            location.Property(l => l.PostalCode)
-                .HasColumnName("PickupPostalCode")
-                .HasMaxLength(10);
-
-            location.Property(l => l.AddressLine)
-                .HasColumnName("PickupAddressLine")
-                .IsRequired()
-                .HasMaxLength(500);
+            location.HasIndex(l => l.District)
+                    .HasDatabaseName("IX_TransportRequests_PickupDistrict");
         });
 
-        // Drop location
-        builder.Property(r => r.DropAddress)
-            .IsRequired()
-            .HasMaxLength(500);
-
-        // Value Object - Location for Drop (Complete Bangladesh Address)
+        // 2. Drop Location Configuration
         builder.OwnsOne(r => r.DropLocation, location =>
         {
-            location.Property(l => l.Latitude)
-                .HasColumnName("DropLatitude")
-                .IsRequired()
-                .HasPrecision(9, 6);
+            location.Property(l => l.Latitude).HasColumnName("DropLatitude").IsRequired().HasPrecision(9, 6);
+            location.Property(l => l.Longitude).HasColumnName("DropLongitude").IsRequired().HasPrecision(9, 6);
+            location.Property(l => l.Division).HasColumnName("DropDivision").IsRequired().HasMaxLength(50);
+            location.Property(l => l.District).HasColumnName("DropDistrict").IsRequired().HasMaxLength(50);
+            location.Property(l => l.Thana).HasColumnName("DropThana").IsRequired().HasMaxLength(50);
+            location.Property(l => l.PostalCode).HasColumnName("DropPostalCode").HasMaxLength(10);
+            location.Property(l => l.AddressLine).HasColumnName("DropAddressLine").IsRequired().HasMaxLength(500);
 
-            location.Property(l => l.Longitude)
-                .HasColumnName("DropLongitude")
-                .IsRequired()
-                .HasPrecision(9, 6);
-
-            location.Property(l => l.Division)
-                .HasColumnName("DropDivision")
-                .IsRequired()
-                .HasMaxLength(50);
-
-            location.Property(l => l.District)
-                .HasColumnName("DropDistrict")
-                .IsRequired()
-                .HasMaxLength(50);
-
-            location.Property(l => l.Thana)
-                .HasColumnName("DropThana")
-                .IsRequired()
-                .HasMaxLength(50);
-
-            location.Property(l => l.PostalCode)
-                .HasColumnName("DropPostalCode")
-                .HasMaxLength(10);
-
-            location.Property(l => l.AddressLine)
-                .HasColumnName("DropAddressLine")
-                .IsRequired()
-                .HasMaxLength(500);
+            // Add Drop indexes here if needed
         });
-
-        // Spatial index for pickup location (PostGIS GIST)
-        builder.HasIndex("PickupLatitude", "PickupLongitude")
-            .HasDatabaseName("IX_TransportRequests_PickupLocation");
-
-        // Index for pickup district for area-based queries
-        builder.HasIndex("PickupDistrict")
-            .HasDatabaseName("IX_TransportRequests_PickupDistrict");
 
         builder.Property(r => r.GoodsType)
             .IsRequired()

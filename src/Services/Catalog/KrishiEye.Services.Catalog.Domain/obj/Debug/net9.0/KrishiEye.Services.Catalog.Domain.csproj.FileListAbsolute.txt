@@ -5,6 +5,7 @@ D:\Resources\Projects\KrishiEye\src\Services\Catalog\KrishiEye.Services.Catalog.
 D:\Resources\Projects\KrishiEye\src\Services\Catalog\KrishiEye.Services.Catalog.Domain\obj\Debug\net9.0\KrishiEye.Services.Catalog.Domain.AssemblyInfoInputs.cache
 D:\Resources\Projects\KrishiEye\src\Services\Catalog\KrishiEye.Services.Catalog.Domain\obj\Debug\net9.0\KrishiEye.Services.Catalog.Domain.AssemblyInfo.cs
 D:\Resources\Projects\KrishiEye\src\Services\Catalog\KrishiEye.Services.Catalog.Domain\obj\Debug\net9.0\KrishiEye.Services.Catalog.Domain.csproj.CoreCompileInputs.cache
+D:\Resources\Projects\KrishiEye\src\Services\Catalog\KrishiEye.Services.Catalog.Domain\obj\Debug\net9.0\KrishiEye.Services.Catalog.Domain.sourcelink.json
 D:\Resources\Projects\KrishiEye\src\Services\Catalog\KrishiEye.Services.Catalog.Domain\obj\Debug\net9.0\KrishiEye.Services.Catalog.Domain.dll
 D:\Resources\Projects\KrishiEye\src\Services\Catalog\KrishiEye.Services.Catalog.Domain\obj\Debug\net9.0\refint\KrishiEye.Services.Catalog.Domain.dll
 D:\Resources\Projects\KrishiEye\src\Services\Catalog\KrishiEye.Services.Catalog.Domain\obj\Debug\net9.0\KrishiEye.Services.Catalog.Domain.pdb

@@ -1,6 +1,8 @@
 using KrishiEye.Services.Transport.Application.Features.TransportRequests.Commands.CreateTransportRequest;
+using KrishiEye.Services.Transport.Application.Features.TransportRequests.Queries.GetRequestDetails;
 using KrishiEye.Services.Transport.Domain.Common;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KrishiEye.Services.Transport.API.Controllers;
@@ -9,23 +11,38 @@ namespace KrishiEye.Services.Transport.API.Controllers;
 [Route("api/[controller]")]
 public class TransportRequestsController : ControllerBase
 {
-    private readonly IMediator _mediator;
+    private readonly ISender _sender;
 
-    public TransportRequestsController(IMediator mediator)
+    public TransportRequestsController(ISender sender)
     {
-        _mediator = mediator;
+        _sender = sender;
     }
 
     [HttpPost]
-    public async Task<ActionResult<Guid>> Create(CreateTransportRequestCommand command)
+    [Authorize]
+    public async Task<ActionResult<Guid>> CreateRequest(CreateTransportRequestCommand command)
     {
-        var result = await _mediator.Send(command);
+        var result = await _sender.Send(command);
 
-        if (result.IsFailure)
+        if (result.IsSuccess)
         {
-            return BadRequest(result.Error);
+            return Ok(result.Value);
         }
 
-        return Ok(result.Value);
+        return BadRequest(result.Error);
+    }
+
+    [HttpGet("{requestId}")]
+    public async Task<ActionResult> GetRequestDetails(Guid requestId)
+    {
+        var query = new GetRequestDetailsQuery { RequestId = requestId };
+        var result = await _sender.Send(query);
+
+        if (result.IsSuccess)
+        {
+            return Ok(result.Value);
+        }
+
+        return BadRequest(result.Error);
     }
 }

@@ -26,23 +26,31 @@ public class TransporterProfileConfiguration : IEntityTypeConfiguration<Transpor
             .IsRequired()
             .HasConversion<string>();
 
-        builder.Property(t => t.CompanyName)
-            .HasMaxLength(100);
+        builder.Property(t => t.Name)
+            .HasMaxLength(200)
+            .IsRequired();
 
-        builder.Property(t => t.TradeLicenseNo)
+        builder.Property(t => t.ContactNumber)
+            .HasMaxLength(20)
+            .IsRequired();
+
+        builder.Property(t => t.TradeLicenseNumber)
             .HasMaxLength(50);
 
-        builder.Property(t => t.BaseLatitude)
-            .IsRequired()
-            .HasPrecision(9, 6);
-
-        builder.Property(t => t.BaseLongitude)
-            .IsRequired()
-            .HasPrecision(9, 6);
-
-        // Spatial index for geo-queries (PostGIS GIST index)
-        builder.HasIndex(t => new { t.BaseLatitude, t.BaseLongitude })
-            .HasDatabaseName("IX_TransporterProfiles_Location");
+        builder.OwnsOne(t => t.Location, location =>
+        {
+            location.Property(l => l.Latitude).HasColumnName("Latitude").IsRequired();
+            location.Property(l => l.Longitude).HasColumnName("Longitude").IsRequired();
+            location.Property(l => l.AddressLine).HasColumnName("AddressLine").HasMaxLength(500);
+            location.Property(l => l.Division).HasColumnName("Division").HasMaxLength(100);
+            location.Property(l => l.District).HasColumnName("District").HasMaxLength(100);
+            location.Property(l => l.Thana).HasColumnName("Thana").HasMaxLength(100);
+            location.Property(l => l.PostalCode).HasColumnName("PostalCode").HasMaxLength(20);
+            
+            // Spatial index
+            location.HasIndex(l => new { l.Latitude, l.Longitude })
+                .HasDatabaseName("IX_TransporterProfiles_Location");
+        });
 
         builder.Property(t => t.ServiceRadiusKm)
             .HasDefaultValue(50);

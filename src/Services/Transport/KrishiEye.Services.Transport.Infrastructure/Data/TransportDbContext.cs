@@ -3,6 +3,7 @@ using KrishiEye.Services.Transport.Application.Common.Interfaces;
 using KrishiEye.Services.Transport.Domain.Common;
 using KrishiEye.Services.Transport.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 
 namespace KrishiEye.Services.Transport.Infrastructure.Data;
 
@@ -42,5 +43,30 @@ public class TransportDbContext : DbContext, IApplicationDbContext
         // TODO: Dispatch domain events here (will be implemented with MediatR)
 
         return result;
+    }
+}
+
+public class TransportDbContextFactory : IDesignTimeDbContextFactory<TransportDbContext>
+{
+    public TransportDbContext CreateDbContext(string[] args)
+    {
+        try
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<TransportDbContext>();
+            var connectionString = "Host=localhost;Port=5433;Database=KrishiEye_Transport;Username=postgres;Password=Password123!";
+
+            optionsBuilder.UseNpgsql(connectionString, npgsqlOptions =>
+            {
+                npgsqlOptions.UseNetTopologySuite();
+                npgsqlOptions.MigrationsAssembly(typeof(TransportDbContext).Assembly.FullName);
+            });
+
+            return new TransportDbContext(optionsBuilder.Options);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error creating DbContext: {ex}");
+            throw;
+        }
     }
 }
