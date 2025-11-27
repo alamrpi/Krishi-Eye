@@ -1,0 +1,12 @@
+D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.Domain\bin\Debug\net9.0\KrishiEye.Services.Identity.Domain.deps.json
+D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.Domain\bin\Debug\net9.0\KrishiEye.Services.Identity.Domain.dll
+D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.Domain\bin\Debug\net9.0\KrishiEye.Services.Identity.Domain.pdb
+D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.Domain\obj\Debug\net9.0\KrishiEye.Services.Identity.Domain.csproj.AssemblyReference.cache
+D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.Domain\obj\Debug\net9.0\KrishiEye.Services.Identity.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.Domain\obj\Debug\net9.0\KrishiEye.Services.Identity.Domain.AssemblyInfoInputs.cache
+D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.Domain\obj\Debug\net9.0\KrishiEye.Services.Identity.Domain.AssemblyInfo.cs
+D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.Domain\obj\Debug\net9.0\KrishiEye.Services.Identity.Domain.csproj.CoreCompileInputs.cache
+D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.Domain\obj\Debug\net9.0\KrishiEye.Services.Identity.Domain.dll
+D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.Domain\obj\Debug\net9.0\refint\KrishiEye.Services.Identity.Domain.dll
+D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.Domain\obj\Debug\net9.0\KrishiEye.Services.Identity.Domain.pdb
+D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.Domain\obj\Debug\net9.0\ref\KrishiEye.Services.Identity.Domain.dll

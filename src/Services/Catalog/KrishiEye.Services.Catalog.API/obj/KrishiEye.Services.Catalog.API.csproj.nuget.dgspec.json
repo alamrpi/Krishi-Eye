@@ -1,0 +1,347 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Catalog\\KrishiEye.Services.Catalog.API\\KrishiEye.Services.Catalog.API.csproj": {}
+  },
+  "projects": {
+    "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Catalog\\KrishiEye.Services.Catalog.API\\KrishiEye.Services.Catalog.API.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Catalog\\KrishiEye.Services.Catalog.API\\KrishiEye.Services.Catalog.API.csproj",
+        "projectName": "KrishiEye.Services.Catalog.API",
+        "projectPath": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Catalog\\KrishiEye.Services.Catalog.API\\KrishiEye.Services.Catalog.API.csproj",
+        "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
+        "outputPath": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Catalog\\KrishiEye.Services.Catalog.API\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Catalog\\KrishiEye.Services.Catalog.Application\\KrishiEye.Services.Catalog.Application.csproj": {
+                "projectPath": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Catalog\\KrishiEye.Services.Catalog.Application\\KrishiEye.Services.Catalog.Application.csproj"
+              },
+              "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Catalog\\KrishiEye.Services.Catalog.Infrastructure\\KrishiEye.Services.Catalog.Infrastructure.csproj": {
+                "projectPath": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Catalog\\KrishiEye.Services.Catalog.Infrastructure\\KrishiEye.Services.Catalog.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[7.2.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.307/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Catalog\\KrishiEye.Services.Catalog.Application\\KrishiEye.Services.Catalog.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Catalog\\KrishiEye.Services.Catalog.Application\\KrishiEye.Services.Catalog.Application.csproj",
+        "projectName": "KrishiEye.Services.Catalog.Application",
+        "projectPath": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Catalog\\KrishiEye.Services.Catalog.Application\\KrishiEye.Services.Catalog.Application.csproj",
+        "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
+        "outputPath": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Catalog\\KrishiEye.Services.Catalog.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Catalog\\KrishiEye.Services.Catalog.Domain\\KrishiEye.Services.Catalog.Domain.csproj": {
+                "projectPath": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Catalog\\KrishiEye.Services.Catalog.Domain\\KrishiEye.Services.Catalog.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "FluentValidation.DependencyInjectionExtensions": {
+              "target": "Package",
+              "version": "[12.1.0, )"
+            },
+            "MediatR": {
+              "target": "Package",
+              "version": "[13.1.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[10.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.307/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Catalog\\KrishiEye.Services.Catalog.Domain\\KrishiEye.Services.Catalog.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Catalog\\KrishiEye.Services.Catalog.Domain\\KrishiEye.Services.Catalog.Domain.csproj",
+        "projectName": "KrishiEye.Services.Catalog.Domain",
+        "projectPath": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Catalog\\KrishiEye.Services.Catalog.Domain\\KrishiEye.Services.Catalog.Domain.csproj",
+        "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
+        "outputPath": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Catalog\\KrishiEye.Services.Catalog.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.307/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Catalog\\KrishiEye.Services.Catalog.Infrastructure\\KrishiEye.Services.Catalog.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Catalog\\KrishiEye.Services.Catalog.Infrastructure\\KrishiEye.Services.Catalog.Infrastructure.csproj",
+        "projectName": "KrishiEye.Services.Catalog.Infrastructure",
+        "projectPath": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Catalog\\KrishiEye.Services.Catalog.Infrastructure\\KrishiEye.Services.Catalog.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
+        "outputPath": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Catalog\\KrishiEye.Services.Catalog.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Catalog\\KrishiEye.Services.Catalog.Application\\KrishiEye.Services.Catalog.Application.csproj": {
+                "projectPath": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Catalog\\KrishiEye.Services.Catalog.Application\\KrishiEye.Services.Catalog.Application.csproj"
+              },
+              "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Catalog\\KrishiEye.Services.Catalog.Domain\\KrishiEye.Services.Catalog.Domain.csproj": {
+                "projectPath": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Catalog\\KrishiEye.Services.Catalog.Domain\\KrishiEye.Services.Catalog.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[10.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Binder": {
+              "target": "Package",
+              "version": "[10.0.0, )"
+            },
+            "StackExchange.Redis": {
+              "target": "Package",
+              "version": "[2.10.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.307/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

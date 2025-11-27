@@ -1,0 +1,5 @@
+D:\Resources\Projects\KrishiEye\src\Services\Transport\MigrationApp\obj\Debug\net9.0\MigrationApp.csproj.AssemblyReference.cache
+D:\Resources\Projects\KrishiEye\src\Services\Transport\MigrationApp\obj\Debug\net9.0\MigrationApp.GeneratedMSBuildEditorConfig.editorconfig
+D:\Resources\Projects\KrishiEye\src\Services\Transport\MigrationApp\obj\Debug\net9.0\MigrationApp.AssemblyInfoInputs.cache
+D:\Resources\Projects\KrishiEye\src\Services\Transport\MigrationApp\obj\Debug\net9.0\MigrationApp.AssemblyInfo.cs
+D:\Resources\Projects\KrishiEye\src\Services\Transport\MigrationApp\obj\Debug\net9.0\MigrationApp.csproj.CoreCompileInputs.cache

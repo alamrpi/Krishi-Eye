@@ -1,0 +1,15 @@
+D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.Application\bin\Debug\net9.0\KrishiEye.Services.Identity.Application.deps.json
+D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.Application\bin\Debug\net9.0\KrishiEye.Services.Identity.Application.dll
+D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.Application\bin\Debug\net9.0\KrishiEye.Services.Identity.Application.pdb
+D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.Application\bin\Debug\net9.0\KrishiEye.Services.Identity.Domain.dll
+D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.Application\bin\Debug\net9.0\KrishiEye.Services.Identity.Domain.pdb
+D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.Application\obj\Debug\net9.0\KrishiEye.Services.Identity.Application.csproj.AssemblyReference.cache
+D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.Application\obj\Debug\net9.0\KrishiEye.Services.Identity.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.Application\obj\Debug\net9.0\KrishiEye.Services.Identity.Application.AssemblyInfoInputs.cache
+D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.Application\obj\Debug\net9.0\KrishiEye.Services.Identity.Application.AssemblyInfo.cs
+D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.Application\obj\Debug\net9.0\KrishiEye.Services.Identity.Application.csproj.CoreCompileInputs.cache
+D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.Application\obj\Debug\net9.0\KrishiEy.8000721C.Up2Date
+D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.Application\obj\Debug\net9.0\KrishiEye.Services.Identity.Application.dll
+D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.Application\obj\Debug\net9.0\refint\KrishiEye.Services.Identity.Application.dll
+D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.Application\obj\Debug\net9.0\KrishiEye.Services.Identity.Application.pdb
+D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.Application\obj\Debug\net9.0\ref\KrishiEye.Services.Identity.Application.dll

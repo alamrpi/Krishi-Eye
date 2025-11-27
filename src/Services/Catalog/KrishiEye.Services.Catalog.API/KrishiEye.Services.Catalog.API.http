@@ -1,0 +1,6 @@
+@KrishiEye.ItemCatalog.API_HostAddress = http://localhost:5109
+
+GET {{KrishiEye.ItemCatalog.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

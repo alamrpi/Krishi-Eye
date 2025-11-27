@@ -1,0 +1,15 @@
+D:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.Application\bin\Debug\net9.0\KrishiEye.Services.Transport.Application.deps.json
+D:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.Application\bin\Debug\net9.0\KrishiEye.Services.Transport.Application.dll
+D:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.Application\bin\Debug\net9.0\KrishiEye.Services.Transport.Application.pdb
+D:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.Application\bin\Debug\net9.0\KrishiEye.Services.Transport.Domain.dll
+D:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.Application\bin\Debug\net9.0\KrishiEye.Services.Transport.Domain.pdb
+D:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.Application\obj\Debug\net9.0\KrishiEye.Services.Transport.Application.csproj.AssemblyReference.cache
+D:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.Application\obj\Debug\net9.0\KrishiEye.Services.Transport.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.Application\obj\Debug\net9.0\KrishiEye.Services.Transport.Application.AssemblyInfoInputs.cache
+D:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.Application\obj\Debug\net9.0\KrishiEye.Services.Transport.Application.AssemblyInfo.cs
+D:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.Application\obj\Debug\net9.0\KrishiEye.Services.Transport.Application.csproj.CoreCompileInputs.cache
+D:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.Application\obj\Debug\net9.0\KrishiEy.C2E5CA2C.Up2Date
+D:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.Application\obj\Debug\net9.0\KrishiEye.Services.Transport.Application.dll
+D:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.Application\obj\Debug\net9.0\refint\KrishiEye.Services.Transport.Application.dll
+D:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.Application\obj\Debug\net9.0\KrishiEye.Services.Transport.Application.pdb
+D:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.Application\obj\Debug\net9.0\ref\KrishiEye.Services.Transport.Application.dll

@@ -1,0 +1,11 @@
+D:\Resources\Projects\KrishiEye\src\Services\Catalog\KrishiEye.Services.Catalog.Domain\bin\Debug\net9.0\KrishiEye.Services.Catalog.Domain.deps.json
+D:\Resources\Projects\KrishiEye\src\Services\Catalog\KrishiEye.Services.Catalog.Domain\bin\Debug\net9.0\KrishiEye.Services.Catalog.Domain.dll
+D:\Resources\Projects\KrishiEye\src\Services\Catalog\KrishiEye.Services.Catalog.Domain\bin\Debug\net9.0\KrishiEye.Services.Catalog.Domain.pdb
+D:\Resources\Projects\KrishiEye\src\Services\Catalog\KrishiEye.Services.Catalog.Domain\obj\Debug\net9.0\KrishiEye.Services.Catalog.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Resources\Projects\KrishiEye\src\Services\Catalog\KrishiEye.Services.Catalog.Domain\obj\Debug\net9.0\KrishiEye.Services.Catalog.Domain.AssemblyInfoInputs.cache
+D:\Resources\Projects\KrishiEye\src\Services\Catalog\KrishiEye.Services.Catalog.Domain\obj\Debug\net9.0\KrishiEye.Services.Catalog.Domain.AssemblyInfo.cs
+D:\Resources\Projects\KrishiEye\src\Services\Catalog\KrishiEye.Services.Catalog.Domain\obj\Debug\net9.0\KrishiEye.Services.Catalog.Domain.csproj.CoreCompileInputs.cache
+D:\Resources\Projects\KrishiEye\src\Services\Catalog\KrishiEye.Services.Catalog.Domain\obj\Debug\net9.0\KrishiEye.Services.Catalog.Domain.dll
+D:\Resources\Projects\KrishiEye\src\Services\Catalog\KrishiEye.Services.Catalog.Domain\obj\Debug\net9.0\refint\KrishiEye.Services.Catalog.Domain.dll
+D:\Resources\Projects\KrishiEye\src\Services\Catalog\KrishiEye.Services.Catalog.Domain\obj\Debug\net9.0\KrishiEye.Services.Catalog.Domain.pdb
+D:\Resources\Projects\KrishiEye\src\Services\Catalog\KrishiEye.Services.Catalog.Domain\obj\Debug\net9.0\ref\KrishiEye.Services.Catalog.Domain.dll

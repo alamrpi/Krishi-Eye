@@ -1,0 +1,11 @@
+D:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.Domain\bin\Debug\net9.0\KrishiEye.Services.Transport.Domain.deps.json
+D:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.Domain\bin\Debug\net9.0\KrishiEye.Services.Transport.Domain.dll
+D:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.Domain\bin\Debug\net9.0\KrishiEye.Services.Transport.Domain.pdb
+D:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.Domain\obj\Debug\net9.0\KrishiEye.Services.Transport.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.Domain\obj\Debug\net9.0\KrishiEye.Services.Transport.Domain.AssemblyInfoInputs.cache
+D:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.Domain\obj\Debug\net9.0\KrishiEye.Services.Transport.Domain.AssemblyInfo.cs
+D:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.Domain\obj\Debug\net9.0\KrishiEye.Services.Transport.Domain.csproj.CoreCompileInputs.cache
+D:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.Domain\obj\Debug\net9.0\KrishiEye.Services.Transport.Domain.dll
+D:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.Domain\obj\Debug\net9.0\refint\KrishiEye.Services.Transport.Domain.dll
+D:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.Domain\obj\Debug\net9.0\KrishiEye.Services.Transport.Domain.pdb
+D:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.Domain\obj\Debug\net9.0\ref\KrishiEye.Services.Transport.Domain.dll

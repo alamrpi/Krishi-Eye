@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "KrishiEye.Services.Transport.Domain/1.0.0": {
+        "runtime": {
+          "KrishiEye.Services.Transport.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "KrishiEye.Services.Transport.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
