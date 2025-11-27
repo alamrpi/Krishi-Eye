@@ -120,6 +120,7 @@ D:\Resources\Projects\KrishiEye\tests\Services\Catalog\KrishiEye.Services.Catalo
 D:\Resources\Projects\KrishiEye\tests\Services\Catalog\KrishiEye.Services.Catalog.UnitTests\obj\Debug\net9.0\KrishiEye.Services.Catalog.UnitTests.AssemblyInfoInputs.cache
 D:\Resources\Projects\KrishiEye\tests\Services\Catalog\KrishiEye.Services.Catalog.UnitTests\obj\Debug\net9.0\KrishiEye.Services.Catalog.UnitTests.AssemblyInfo.cs
 D:\Resources\Projects\KrishiEye\tests\Services\Catalog\KrishiEye.Services.Catalog.UnitTests\obj\Debug\net9.0\KrishiEye.Services.Catalog.UnitTests.csproj.CoreCompileInputs.cache
+D:\Resources\Projects\KrishiEye\tests\Services\Catalog\KrishiEye.Services.Catalog.UnitTests\obj\Debug\net9.0\KrishiEye.Services.Catalog.UnitTests.sourcelink.json
 D:\Resources\Projects\KrishiEye\tests\Services\Catalog\KrishiEye.Services.Catalog.UnitTests\obj\Debug\net9.0\KrishiEy.3A19CAC8.Up2Date
 D:\Resources\Projects\KrishiEye\tests\Services\Catalog\KrishiEye.Services.Catalog.UnitTests\obj\Debug\net9.0\KrishiEye.Services.Catalog.UnitTests.dll
 D:\Resources\Projects\KrishiEye\tests\Services\Catalog\KrishiEye.Services.Catalog.UnitTests\obj\Debug\net9.0\refint\KrishiEye.Services.Catalog.UnitTests.dll

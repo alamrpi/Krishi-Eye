@@ -7,16 +7,42 @@ using KrishiEye.Services.Transport.Infrastructure.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Serilog;
+using Serilog.Events;
+using KrishiEye.Services.Transport.Infrastructure.Services;
 
-AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+// Configure Serilog
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Information()
+    .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+    .MinimumLevel.Override("Microsoft.EntityFrameworkCore", LogEventLevel.Warning)
+    .Enrich.FromLogContext()
+    .Enrich.WithProperty("Service", "Transport")
+    .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] {Message:lj} {Properties:j}{NewLine}{Exception}")
+    .WriteTo.File(
+        path: "logs/transport-.log",
+        rollingInterval: RollingInterval.Day,
+        restrictedToMinimumLevel: LogEventLevel.Information,
+        outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:lj} {Properties:j}{NewLine}{Exception}")
+    .CreateLogger();
 
-var builder = WebApplication.CreateBuilder(args);
+try
+{
+    Log.Information("Starting Transport Service");
+
+    AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
+    var builder = WebApplication.CreateBuilder(args);
+
+    // Use Serilog for logging
+    builder.Host.UseSerilog();
 
 // Add services to the container
 builder.Services.AddApplicationServices();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 builder.Services.AddScoped<INotificationService, NotificationService>();
+builder.Services.AddScoped<ICacheService, CacheService>();
 builder.Services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<TransportDbContext>());
 
 builder.Services.AddControllers();
@@ -58,7 +84,14 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 builder.Services.AddAuthorization();
 builder.Services.AddSignalR();
 
-// Configure DbContext with PostgreSQL + PostGIS
+// Configure Redis Caching
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    options.Configuration = builder.Configuration.GetConnectionString("Redis") ?? "localhost:6379";
+    options.InstanceName = "KrishiEye:Transport:";
+});
+
+// Configure DbContext with PostgreSQL + PostGIS + Polly Resilience
 builder.Services.AddDbContext<TransportDbContext>(options =>
 {
     options.UseNpgsql(
@@ -97,4 +130,15 @@ app.MapGet("/health", () => new
 // SignalR hub endpoint
 app.MapHub<TransportHub>("/hubs/transport");
 
-app.Run();
+    Log.Information("Transport Service started successfully");
+    app.Run();
+}
+catch (Exception ex)
+{
+    Log.Fatal(ex, "Transport Service failed to start");
+    throw;
+}
+finally
+{
+    Log.CloseAndFlush();
+}

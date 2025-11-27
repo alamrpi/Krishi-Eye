@@ -225,7 +225,11 @@
             },
             "Microsoft.Extensions.Caching.StackExchangeRedis": {
               "target": "Package",
-              "version": "[9.0.0, )"
+              "version": "[10.0.0, )"
+            },
+            "Microsoft.Extensions.Http.Polly": {
+              "target": "Package",
+              "version": "[10.0.0, )"
             },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
@@ -239,9 +243,13 @@
               "target": "Package",
               "version": "[9.0.0, )"
             },
+            "Polly": {
+              "target": "Package",
+              "version": "[8.6.5, )"
+            },
             "StackExchange.Redis": {
               "target": "Package",
-              "version": "[2.8.16, )"
+              "version": "[2.10.1, )"
             }
           },
           "imports": [

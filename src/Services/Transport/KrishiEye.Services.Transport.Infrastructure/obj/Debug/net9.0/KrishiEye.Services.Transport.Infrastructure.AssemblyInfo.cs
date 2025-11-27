@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KrishiEye.Services.Transport.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+53ab7b5bd955c43f002a374ad3e2cbc8ebc658dd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c15092ed004713bc115909eec2fa9f5d10111c43")]
 [assembly: System.Reflection.AssemblyProductAttribute("KrishiEye.Services.Transport.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KrishiEye.Services.Transport.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

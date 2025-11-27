@@ -160,7 +160,6 @@ D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identit
 D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.API\obj\Debug\net9.0\staticwebassets.build.json.cache
 D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.API\obj\Debug\net9.0\staticwebassets.development.json
 D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.API\obj\Debug\net9.0\staticwebassets.build.endpoints.json
-D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.API\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.API\obj\Debug\net9.0\KrishiEy.3EFAA6CF.Up2Date
 D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.API\obj\Debug\net9.0\KrishiEye.Services.Identity.API.dll
 D:\Resources\Projects\KrishiEye\src\Services\Identity\KrishiEye.Services.Identity.API\obj\Debug\net9.0\refint\KrishiEye.Services.Identity.API.dll
