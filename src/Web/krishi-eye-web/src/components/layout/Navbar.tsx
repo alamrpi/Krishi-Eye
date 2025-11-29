@@ -1,11 +1,16 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Search, ShoppingCart, User, Menu, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MegaMenu, MegaMenuSection } from "./MegaMenu";
+import { useState } from "react";
 
 export function Navbar() {
+    const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+    const router = useRouter();
+
     return (
         <>
             {/* Top Bar - Contact Info */}
@@ -36,16 +41,27 @@ export function Navbar() {
                     </Link>
 
                     {/* Search Bar - Centered & Prominent */}
-                    <div className="hidden md:flex flex-1 max-w-xl mx-auto relative">
+                    <form
+                        onSubmit={(e) => {
+                            e.preventDefault();
+                            const formData = new FormData(e.currentTarget);
+                            const query = formData.get('q') as string;
+                            if (query.trim()) {
+                                router.push(`/search?q=${encodeURIComponent(query)}&type=products`);
+                            }
+                        }}
+                        className="hidden md:flex flex-1 max-w-xl mx-auto relative"
+                    >
                         <input
                             type="text"
+                            name="q"
                             placeholder="Search for seeds, fertilizers, or services..."
                             className="w-full h-11 pl-4 pr-12 rounded-full border border-input bg-muted/30 focus:bg-white focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
                         />
-                        <Button size="icon" className="absolute right-1 top-1 h-9 w-9 rounded-full bg-primary text-primary-foreground hover:bg-primary/90">
+                        <Button type="submit" size="icon" className="absolute right-1 top-1 h-9 w-9 rounded-full bg-primary text-primary-foreground hover:bg-primary/90">
                             <Search className="h-4 w-4" />
                         </Button>
-                    </div>
+                    </form>
 
                     {/* Actions Area */}
                     <div className="flex items-center gap-2 shrink-0">
@@ -56,7 +72,12 @@ export function Navbar() {
                         {/* Desktop Navigation with Mega Menus */}
                         <div className="hidden md:flex items-center gap-6 mr-4">
                             {/* Products Dropdown (renamed from Items) */}
-                            <MegaMenu trigger="Products" className="w-[600px]">
+                            <MegaMenu
+                                trigger="Products"
+                                className="w-[600px]"
+                                isOpen={openDropdown === "products"}
+                                onOpenChange={(open) => setOpenDropdown(open ? "products" : null)}
+                            >
                                 <div className="grid grid-cols-3 gap-6">
                                     <MegaMenuSection
                                         title="Seeds"
@@ -87,7 +108,12 @@ export function Navbar() {
                             </MegaMenu>
 
                             {/* Transporters Dropdown */}
-                            <MegaMenu trigger="Transporters" className="w-[300px]">
+                            <MegaMenu
+                                trigger="Transporters"
+                                className="w-[300px]"
+                                isOpen={openDropdown === "transporters"}
+                                onOpenChange={(open) => setOpenDropdown(open ? "transporters" : null)}
+                            >
                                 <div className="grid grid-cols-1 gap-4">
                                     <MegaMenuSection
                                         title="Vehicle Type"
@@ -103,7 +129,12 @@ export function Navbar() {
                             </MegaMenu>
 
                             {/* Consultants Dropdown (renamed from Services) */}
-                            <MegaMenu trigger="Consultants" className="w-[500px]">
+                            <MegaMenu
+                                trigger="Consultants"
+                                className="w-[500px]"
+                                isOpen={openDropdown === "consultants"}
+                                onOpenChange={(open) => setOpenDropdown(open ? "consultants" : null)}
+                            >
                                 <div className="grid grid-cols-2 gap-6">
                                     <MegaMenuSection
                                         title="Veterinary"
