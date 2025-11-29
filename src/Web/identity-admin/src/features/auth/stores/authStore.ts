@@ -10,7 +10,7 @@ interface AuthState {
     refreshToken: string | null;
     isAuthenticated: boolean;
     isLoading: boolean;
-    login: (credentials: LoginRequest) => Promise<void>;
+    login: (credentials: LoginRequest) => Promise<LoginResponse>;
     logout: () => void;
     setUser: (user: User | null) => void;
 }
@@ -41,6 +41,9 @@ export const useAuthStore = create<AuthState>()(
                         isAuthenticated: true,
                         isLoading: false,
                     });
+
+                    // Return the full response data including token
+                    return response.data;
                 } catch (error) {
                     set({ isLoading: false });
                     throw error;

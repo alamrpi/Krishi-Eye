@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useSearchParams } from 'react-router-dom';
 import { useAuthStore } from '../features/auth/stores/authStore';
 import { ROUTES } from '../shared/constants';
 
 const LoginPage: React.FC = () => {
     const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
     const login = useAuthStore((state) => state.login);
 
     const [email, setEmail] = useState('');
@@ -12,14 +13,27 @@ const LoginPage: React.FC = () => {
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false);
 
+    // Get returnUrl from query parameter
+    const returnUrl = searchParams.get('returnUrl');
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setError('');
         setIsLoading(true);
 
         try {
-            await login({ email, password });
-            navigate(ROUTES.DASHBOARD);
+            const result = await login({ email, password });
+
+            // If returnUrl exists, redirect to it with token
+            if (returnUrl) {
+                // Parse returnUrl to add token as query parameter
+                const url = new URL(decodeURIComponent(returnUrl));
+                url.searchParams.set('token', result.token);
+                window.location.href = url.toString();
+            } else {
+                // Default redirect to admin dashboard
+                navigate(ROUTES.DASHBOARD);
+            }
         } catch (err: any) {
             setError(err.response?.data?.error || 'Login failed. Please try again.');
         } finally {
