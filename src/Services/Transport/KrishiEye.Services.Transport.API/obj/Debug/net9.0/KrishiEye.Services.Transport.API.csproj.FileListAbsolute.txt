@@ -162,7 +162,6 @@ D:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transp
 D:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.API\obj\Debug\net9.0\staticwebassets.build.json.cache
 D:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.API\obj\Debug\net9.0\staticwebassets.development.json
 D:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.API\obj\Debug\net9.0\staticwebassets.build.endpoints.json
-D:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.API\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 D:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.API\obj\Debug\net9.0\KrishiEye.Services.Transport.API.dll
 D:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.API\obj\Debug\net9.0\refint\KrishiEye.Services.Transport.API.dll
 D:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.API\obj\Debug\net9.0\KrishiEye.Services.Transport.API.pdb
@@ -175,3 +174,12 @@ D:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transp
 D:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.API\obj\Debug\net9.0\KrishiEy.57F33669.Up2Date
 D:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.API\obj\Debug\net9.0\KrishiEye.Services.Transport.API.genruntimeconfig.cache
 D:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.API\obj\Debug\net9.0\ref\KrishiEye.Services.Transport.API.dll
+d:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.API\bin\Debug\net9.0\Azure.Core.dll
+d:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.API\bin\Debug\net9.0\Azure.Storage.Blobs.dll
+d:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.API\bin\Debug\net9.0\Azure.Storage.Common.dll
+d:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.API\bin\Debug\net9.0\Google.Protobuf.dll
+d:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.API\bin\Debug\net9.0\Grpc.Core.Api.dll
+d:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.API\bin\Debug\net9.0\Grpc.Net.Client.dll
+d:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.API\bin\Debug\net9.0\Grpc.Net.Common.dll
+d:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.API\bin\Debug\net9.0\System.ClientModel.dll
+d:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.API\bin\Debug\net9.0\System.Memory.Data.dll

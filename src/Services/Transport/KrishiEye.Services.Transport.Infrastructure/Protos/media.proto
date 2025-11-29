@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+option csharp_namespace = "KrishiEye.Services.Media.API.Protos";
+
+package media;
+
+service MediaGrpc {
+  rpc UploadFile (stream UploadFileRequest) returns (UploadFileResponse);
+  rpc DeleteFile (DeleteFileRequest) returns (DeleteFileResponse);
+}
+
+message UploadFileRequest {
+  oneof data {
+    FileMetadata metadata = 1;
+    bytes chunk = 2;
+  }
+}
+
+message FileMetadata {
+  string file_name = 1;
+  string content_type = 2;
+}
+
+message UploadFileResponse {
+  string file_url = 1;
+}
+
+message DeleteFileRequest {
+  string file_url = 1;
+}
+
+message DeleteFileResponse {
+  bool success = 1;
+  string message = 2;
+}

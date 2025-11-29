@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Infrastructure\\KrishiEye.Services.Transport.Infrastructure.csproj": {}
+    "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Infrastructure\\KrishiEye.Services.Transport.Infrastructure.csproj": {}
   },
   "projects": {
-    "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Application\\KrishiEye.Services.Transport.Application.csproj": {
+    "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Application\\KrishiEye.Services.Transport.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Application\\KrishiEye.Services.Transport.Application.csproj",
+        "projectUniqueName": "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Application\\KrishiEye.Services.Transport.Application.csproj",
         "projectName": "KrishiEye.Services.Transport.Application",
-        "projectPath": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Application\\KrishiEye.Services.Transport.Application.csproj",
+        "projectPath": "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Application\\KrishiEye.Services.Transport.Application.csproj",
         "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-        "outputPath": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Application\\obj\\",
+        "outputPath": "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,8 +32,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Domain\\KrishiEye.Services.Transport.Domain.csproj": {
-                "projectPath": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Domain\\KrishiEye.Services.Transport.Domain.csproj"
+              "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Domain\\KrishiEye.Services.Transport.Domain.csproj": {
+                "projectPath": "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Domain\\KrishiEye.Services.Transport.Domain.csproj"
               }
             }
           }
@@ -99,14 +99,14 @@
         }
       }
     },
-    "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Domain\\KrishiEye.Services.Transport.Domain.csproj": {
+    "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Domain\\KrishiEye.Services.Transport.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Domain\\KrishiEye.Services.Transport.Domain.csproj",
+        "projectUniqueName": "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Domain\\KrishiEye.Services.Transport.Domain.csproj",
         "projectName": "KrishiEye.Services.Transport.Domain",
-        "projectPath": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Domain\\KrishiEye.Services.Transport.Domain.csproj",
+        "projectPath": "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Domain\\KrishiEye.Services.Transport.Domain.csproj",
         "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-        "outputPath": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Domain\\obj\\",
+        "outputPath": "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -164,14 +164,14 @@
         }
       }
     },
-    "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Infrastructure\\KrishiEye.Services.Transport.Infrastructure.csproj": {
+    "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Infrastructure\\KrishiEye.Services.Transport.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Infrastructure\\KrishiEye.Services.Transport.Infrastructure.csproj",
+        "projectUniqueName": "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Infrastructure\\KrishiEye.Services.Transport.Infrastructure.csproj",
         "projectName": "KrishiEye.Services.Transport.Infrastructure",
-        "projectPath": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Infrastructure\\KrishiEye.Services.Transport.Infrastructure.csproj",
+        "projectPath": "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Infrastructure\\KrishiEye.Services.Transport.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-        "outputPath": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Infrastructure\\obj\\",
+        "outputPath": "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -192,11 +192,11 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Application\\KrishiEye.Services.Transport.Application.csproj": {
-                "projectPath": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Application\\KrishiEye.Services.Transport.Application.csproj"
+              "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Application\\KrishiEye.Services.Transport.Application.csproj": {
+                "projectPath": "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Application\\KrishiEye.Services.Transport.Application.csproj"
               },
-              "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Domain\\KrishiEye.Services.Transport.Domain.csproj": {
-                "projectPath": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Domain\\KrishiEye.Services.Transport.Domain.csproj"
+              "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Domain\\KrishiEye.Services.Transport.Domain.csproj": {
+                "projectPath": "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Domain\\KrishiEye.Services.Transport.Domain.csproj"
               }
             }
           }
@@ -220,6 +220,19 @@
             "Azure.Storage.Blobs": {
               "target": "Package",
               "version": "[12.26.0, )"
+            },
+            "Google.Protobuf": {
+              "target": "Package",
+              "version": "[3.33.1, )"
+            },
+            "Grpc.Net.Client": {
+              "target": "Package",
+              "version": "[2.71.0, )"
+            },
+            "Grpc.Tools": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.76.0, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",

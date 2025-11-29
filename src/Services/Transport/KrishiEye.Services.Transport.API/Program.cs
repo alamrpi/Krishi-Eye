@@ -43,7 +43,7 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 builder.Services.AddScoped<INotificationService, NotificationService>();
 builder.Services.AddScoped<ICacheService, CacheService>();
-builder.Services.AddScoped<IFileStorageService, AzureBlobStorageService>();
+builder.Services.AddScoped<IFileStorageService, MediaServiceGrpcClient>();
 builder.Services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<TransportDbContext>());
 
 builder.Services.AddControllers();

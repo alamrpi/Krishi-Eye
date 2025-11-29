@@ -4,6 +4,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
+builder.Services.AddGrpc();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -39,5 +40,6 @@ app.UseCors("AllowAll");
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapGrpcService<GrpcMediaService>();
 
 app.Run();

@@ -14,11 +14,13 @@ public class DeleteVehicleCommandHandler : IRequestHandler<DeleteVehicleCommand,
 {
     private readonly IApplicationDbContext _context;
     private readonly ICurrentUserService _currentUserService;
+    private readonly IFileStorageService _fileStorageService;
 
-    public DeleteVehicleCommandHandler(IApplicationDbContext context, ICurrentUserService currentUserService)
+    public DeleteVehicleCommandHandler(IApplicationDbContext context, ICurrentUserService currentUserService, IFileStorageService fileStorageService)
     {
         _context = context;
         _currentUserService = currentUserService;
+        _fileStorageService = fileStorageService;
     }
 
     public async Task<Result<bool>> Handle(DeleteVehicleCommand request, CancellationToken cancellationToken)
@@ -52,6 +54,30 @@ public class DeleteVehicleCommandHandler : IRequestHandler<DeleteVehicleCommand,
         if (isUsedInJobs)
         {
             return Result.Failure<bool>("Cannot delete vehicle. Vehicle is assigned to one or more jobs.");
+        }
+
+        // Delete vehicle documents if they exist
+        if (!string.IsNullOrEmpty(vehicle.DocumentsUrl))
+        {
+            try
+            {
+                var documents = System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, string>>(vehicle.DocumentsUrl);
+                if (documents != null)
+                {
+                    foreach (var url in documents.Values)
+                    {
+                        if (!string.IsNullOrEmpty(url))
+                        {
+                            await _fileStorageService.DeleteFileAsync(url);
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                // Ignore JSON parsing errors or deletion errors to ensure vehicle deletion proceeds
+                // Ideally, log this warning
+            }
         }
 
         // Delete the vehicle

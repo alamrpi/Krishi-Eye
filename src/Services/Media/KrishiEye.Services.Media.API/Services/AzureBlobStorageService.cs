@@ -8,6 +8,7 @@ namespace KrishiEye.Services.Media.API.Services;
 public interface IFileStorageService
 {
     Task<string> UploadFileAsync(Stream fileStream, string fileName, string contentType);
+    Task<(Stream Stream, string Url)> OpenWriteAsync(string fileName, string contentType);
     Task DeleteFileAsync(string fileUrl);
 }
 
@@ -54,6 +55,20 @@ public class AzureBlobStorageService : IFileStorageService
             _logger.LogError(ex, "Error uploading file to Azure Blob Storage");
             throw;
         }
+    }
+
+    public async Task<(Stream Stream, string Url)> OpenWriteAsync(string fileName, string contentType)
+    {
+        var containerClient = _blobServiceClient.GetBlobContainerClient(_containerName);
+        await containerClient.CreateIfNotExistsAsync(PublicAccessType.Blob);
+        var blobClient = containerClient.GetBlobClient(fileName);
+        
+        var options = new BlobOpenWriteOptions
+        {
+            HttpHeaders = new BlobHttpHeaders { ContentType = contentType }
+        };
+
+        return (await blobClient.OpenWriteAsync(true, options), blobClient.Uri.ToString());
     }
 
     public async Task DeleteFileAsync(string fileUrl)

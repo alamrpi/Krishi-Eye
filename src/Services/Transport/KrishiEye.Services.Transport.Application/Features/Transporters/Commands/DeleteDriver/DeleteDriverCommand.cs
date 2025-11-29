@@ -14,11 +14,13 @@ public class DeleteDriverCommandHandler : IRequestHandler<DeleteDriverCommand, R
 {
     private readonly IApplicationDbContext _context;
     private readonly ICurrentUserService _currentUserService;
+    private readonly IFileStorageService _fileStorageService;
 
-    public DeleteDriverCommandHandler(IApplicationDbContext context, ICurrentUserService currentUserService)
+    public DeleteDriverCommandHandler(IApplicationDbContext context, ICurrentUserService currentUserService, IFileStorageService fileStorageService)
     {
         _context = context;
         _currentUserService = currentUserService;
+        _fileStorageService = fileStorageService;
     }
 
     public async Task<Result<bool>> Handle(DeleteDriverCommand request, CancellationToken cancellationToken)
@@ -52,6 +54,12 @@ public class DeleteDriverCommandHandler : IRequestHandler<DeleteDriverCommand, R
         if (isUsedInJobs)
         {
             return Result.Failure<bool>("Cannot delete driver. Driver is assigned to one or more jobs.");
+        }
+
+        // Delete the license image if it exists
+        if (!string.IsNullOrEmpty(driver.LicenseImageUrl))
+        {
+            await _fileStorageService.DeleteFileAsync(driver.LicenseImageUrl);
         }
 
         // Delete the driver

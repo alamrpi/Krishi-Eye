@@ -1,36 +1,39 @@
-using KrishiEye.Services.Transport.Application.Features.Files.Commands.UploadFile;
-using MediatR;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+using KrishiEye.Services.Transport.Application.Common.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 
-namespace KrishiEye.Services.Transport.API.Controllers
+namespace KrishiEye.Services.Transport.API.Controllers;
+
+[ApiController]
+[Route("api/transport/files")]
+public class FilesController : ControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    [Authorize]
-    public class FilesController : ControllerBase
-    {
-        private readonly IMediator _mediator;
+    private readonly IFileStorageService _fileStorageService;
+    private readonly ILogger<FilesController> _logger;
 
-        public FilesController(IMediator mediator)
+    public FilesController(IFileStorageService fileStorageService, ILogger<FilesController> logger)
+    {
+        _fileStorageService = fileStorageService;
+        _logger = logger;
+    }
+
+    [HttpPost("upload")]
+    public async Task<IActionResult> UploadFile(IFormFile file)
+    {
+        if (file == null || file.Length == 0)
         {
-            _mediator = mediator;
+            return BadRequest("No file uploaded.");
         }
 
-        [HttpPost("upload")]
-        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> UploadFile(IFormFile file)
+        try
         {
-            if (file == null || file.Length == 0)
-            {
-                return BadRequest("No file uploaded.");
-            }
-
-            var result = await _mediator.Send(new UploadFileCommand(file));
-            return Ok(new { Url = result });
+            using var stream = file.OpenReadStream();
+            var fileUrl = await _fileStorageService.UploadFileAsync(stream, file.FileName, file.ContentType);
+            return Ok(new { Url = fileUrl });
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "File upload failed");
+            return StatusCode(500, "Internal server error during file upload.");
         }
     }
 }
