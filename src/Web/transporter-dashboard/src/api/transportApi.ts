@@ -126,7 +126,14 @@ export const transportApi = {
     },
 
     // Add driver
-    addDriver: async (data: { name: string; licenseNumber: string; phoneNumber: string }) => {
+    addDriver: async (data: {
+        fullName: string
+        phone: string
+        nidNumber: string
+        licenseNumber: string
+        licenseExpiryDate: string
+        licenseImageUrl: string
+    }) => {
         const response = await apiClient.post('/transport/transporters/drivers', data)
         return response.data
     },
@@ -138,7 +145,14 @@ export const transportApi = {
     },
 
     // Add vehicle
-    addVehicle: async (data: { registrationNumber: string; vehicleType: string; capacity: number }) => {
+    addVehicle: async (data: {
+        type: number
+        registrationNumber: string
+        capacityTon: number
+        model?: string
+        manufactureYear?: number
+        fitnessExpiryDate: string
+    }) => {
         const response = await apiClient.post('/transport/transporters/vehicles', data)
         return response.data
     },

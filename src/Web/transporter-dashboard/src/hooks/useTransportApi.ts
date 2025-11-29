@@ -57,9 +57,53 @@ export const useDrivers = () => {
     })
 }
 
+export const useAddDriver = () => {
+    const queryClient = useQueryClient()
+
+    return useMutation({
+        mutationFn: (data: {
+            fullName: string
+            phone: string
+            nidNumber: string
+            licenseNumber: string
+            licenseExpiryDate: string
+            licenseImageUrl: string
+        }) => transportApi.addDriver(data),
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: queryKeys.drivers })
+            notify.success('Driver added successfully! 👨‍✈️')
+        },
+        onError: (error: any) => {
+            handleApiError(error, 'Failed to add driver')
+        },
+    })
+}
+
 export const useVehicles = () => {
     return useQuery({
         queryKey: queryKeys.vehicles,
         queryFn: () => transportApi.getVehicles(),
+    })
+}
+
+export const useAddVehicle = () => {
+    const queryClient = useQueryClient()
+
+    return useMutation({
+        mutationFn: (data: {
+            type: number
+            registrationNumber: string
+            capacityTon: number
+            model?: string
+            manufactureYear?: number
+            fitnessExpiryDate: string
+        }) => transportApi.addVehicle(data),
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: queryKeys.vehicles })
+            notify.success('Vehicle added successfully! 🚛')
+        },
+        onError: (error: any) => {
+            handleApiError(error, 'Failed to add vehicle')
+        },
     })
 }

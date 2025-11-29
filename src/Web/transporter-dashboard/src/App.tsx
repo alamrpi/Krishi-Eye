@@ -8,6 +8,8 @@ import MyBids from './pages/MyBids'
 import ActiveJobs from './pages/ActiveJobs'
 import CompletedJobs from './pages/CompletedJobs'
 import EarningsReport from './pages/EarningsReport'
+import Drivers from './pages/Drivers'
+import Vehicles from './pages/Vehicles'
 
 function App() {
     return (
@@ -28,9 +30,8 @@ function App() {
                     <Route path="active-jobs" element={<ActiveJobs />} />
                     <Route path="completed-jobs" element={<CompletedJobs />} />
                     <Route path="earnings" element={<EarningsReport />} />
-                    {/* Placeholder routes */}
-                    <Route path="drivers" element={<div className="text-2xl">Drivers Management - Coming Soon</div>} />
-                    <Route path="vehicles" element={<div className="text-2xl">Vehicles Management - Coming Soon</div>} />
+                    <Route path="drivers" element={<Drivers />} />
+                    <Route path="vehicles" element={<Vehicles />} />
                     <Route path="settings" element={<div className="text-2xl">Settings - Coming Soon</div>} />
                 </Route>
             </Routes>
