@@ -1,5 +1,5 @@
-import { useEffect } from 'react'
 import { useQueryClient } from '@tanstack/react-query'
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, Legend } from 'recharts'
 import { useMyBids, useNearbyRequests, queryKeys } from '../hooks/useTransportApi'
 import { useSignalR, useNewRequestNotifications, useBidStatusNotifications } from '../hooks/useSignalR'
 import {
@@ -11,6 +11,7 @@ import {
     ChartBarIcon,
     WifiIcon,
 } from '@heroicons/react/24/outline'
+import TransportMap from '../components/map/Map'
 
 export default function Dashboard() {
     const queryClient = useQueryClient()
@@ -26,13 +27,13 @@ export default function Dashboard() {
     const { connection, isConnected } = useSignalR(userLat, userLng, 50)
 
     // Listen for new requests
-    useNewRequestNotifications(connection, (newRequest) => {
+    useNewRequestNotifications(connection, () => {
         // Invalidate requests query to refetch
         queryClient.invalidateQueries({ queryKey: queryKeys.nearbyRequests(userLat, userLng, 50) })
     })
 
     // Listen for bid status updates
-    useBidStatusNotifications(connection, (bidUpdate) => {
+    useBidStatusNotifications(connection, () => {
         // Invalidate bids query to refetch
         queryClient.invalidateQueries({ queryKey: queryKeys.myBids })
     })
@@ -94,15 +95,88 @@ export default function Dashboard() {
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
                 {/* Map View - Takes 2 columns */}
                 <div className="lg:col-span-2">
+                    <div className="card h-full flex flex-col">
+                        <div className="flex items-center justify-between mb-4">
+                            <h2 className="text-lg font-semibold text-gray-900">Nearby Requests</h2>
+                            <span className="text-sm text-gray-500">
+                                {requests.length} requests within 50km
+                            </span>
+                        </div>
+                        <div className="flex-1 min-h-[400px] relative z-0">
+                            <TransportMap
+                                center={[userLat, userLng]}
+                                zoom={12}
+                                markers={requests.map((req: any) => ({
+                                    id: req.id,
+                                    position: [req.pickupLocation.latitude, req.pickupLocation.longitude],
+                                    title: `${req.goodsType} (${req.weight}kg)`,
+                                    description: `From: ${req.pickupLocation.thana}, ${req.pickupLocation.district}`
+                                }))}
+                                className="h-full w-full rounded-lg"
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                {/* Charts Grid - 2 columns */}
+                <div className="lg:col-span-3 grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    {/* Bid Statistics Chart */}
                     <div className="card">
-                        <h2 className="text-lg font-semibold text-gray-900 mb-4">Nearby Requests</h2>
-                        <div className="h-96 bg-gray-100 rounded-lg flex items-center justify-center">
-                            <div className="text-center">
-                                <p className="text-gray-500">Map will be integrated here</p>
-                                <p className="text-sm text-gray-400 mt-2">
-                                    Showing {requests.length} requests within 50km
-                                </p>
-                            </div>
+                        <h2 className="text-lg font-semibold text-gray-900 mb-4">Bid Statistics</h2>
+                        <div className="h-64 w-full">
+                            <ResponsiveContainer width="100%" height="100%">
+                                <BarChart
+                                    data={[
+                                        { name: 'Pending', value: pendingBids.length, fill: '#EAB308' },
+                                        { name: 'Accepted', value: activeJobs.length + completedJobs.length, fill: '#10B981' },
+                                        { name: 'Rejected', value: bids.length - pendingBids.length - activeJobs.length - completedJobs.length, fill: '#EF4444' },
+                                    ]}
+                                    margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+                                >
+                                    <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                                    <XAxis dataKey="name" />
+                                    <YAxis allowDecimals={false} />
+                                    <Tooltip
+                                        cursor={{ fill: 'transparent' }}
+                                        contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
+                                    />
+                                    <Bar dataKey="value" radius={[4, 4, 0, 0]} barSize={40} />
+                                </BarChart>
+                            </ResponsiveContainer>
+                        </div>
+                    </div>
+
+                    {/* Job Completion Pie Chart */}
+                    <div className="card">
+                        <h2 className="text-lg font-semibold text-gray-900 mb-4">Job Status</h2>
+                        <div className="h-64 w-full">
+                            <ResponsiveContainer width="100%" height="100%">
+                                <PieChart>
+                                    <Pie
+                                        data={[
+                                            { name: 'Active', value: activeJobs.length, fill: '#3B82F6' },
+                                            { name: 'Completed', value: completedJobs.length, fill: '#10B981' },
+                                        ]}
+                                        cx="50%"
+                                        cy="50%"
+                                        innerRadius={60}
+                                        outerRadius={80}
+                                        paddingAngle={5}
+                                        dataKey="value"
+                                    >
+                                        {[
+                                            { name: 'Active', value: activeJobs.length, fill: '#3B82F6' },
+                                            { name: 'Completed', value: completedJobs.length, fill: '#10B981' },
+                                        ].map((entry, index) => (
+                                            <Cell key={`cell-${index}`} fill={entry.fill} />
+                                        ))}
+                                    </Pie>
+                                    <Tooltip
+                                        contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
+                                    />
+                                    <Legend verticalAlign="bottom" height={36} />
+                                </PieChart>
+                            </ResponsiveContainer>
                         </div>
                     </div>
                 </div>
@@ -125,37 +199,37 @@ export default function Dashboard() {
                         ))}
                     </div>
                 </div>
-            </div>
 
-            {/* Recent Activity */}
-            <div className="card">
-                <h2 className="text-lg font-semibold text-gray-900 mb-4">Recent Activity</h2>
-                {bids.length === 0 ? (
-                    <div className="text-center py-8">
-                        <p className="text-gray-600">No recent activity</p>
-                    </div>
-                ) : (
-                    <div className="space-y-4">
-                        {bids.slice(0, 5).map((bid: any, index: number) => (
-                            <div key={index} className="flex items-start gap-x-3 pb-4 border-b border-gray-100 last:border-0">
-                                <div className="flex-shrink-0">
-                                    <div className="h-8 w-8 rounded-full bg-primary-100 flex items-center justify-center">
-                                        <div className="h-2 w-2 rounded-full bg-primary-600" />
+                {/* Recent Activity */}
+                <div className="card">
+                    <h2 className="text-lg font-semibold text-gray-900 mb-4">Recent Activity</h2>
+                    {bids.length === 0 ? (
+                        <div className="text-center py-8">
+                            <p className="text-gray-600">No recent activity</p>
+                        </div>
+                    ) : (
+                        <div className="space-y-4">
+                            {bids.slice(0, 5).map((bid: any, index: number) => (
+                                <div key={index} className="flex items-start gap-x-3 pb-4 border-b border-gray-100 last:border-0">
+                                    <div className="flex-shrink-0">
+                                        <div className="h-8 w-8 rounded-full bg-primary-100 flex items-center justify-center">
+                                            <div className="h-2 w-2 rounded-full bg-primary-600" />
+                                        </div>
+                                    </div>
+                                    <div className="flex-1 min-w-0">
+                                        <p className="text-sm font-medium text-gray-900">
+                                            {bid.status === 'Accepted' ? 'Bid Accepted' : bid.status === 'Pending' ? 'Bid Submitted' : 'Bid Rejected'}:
+                                            ৳{bid.bidAmount.toLocaleString()}
+                                        </p>
+                                        <p className="text-sm text-gray-500">
+                                            {new Date(bid.submittedAt).toLocaleString('en-GB')}
+                                        </p>
                                     </div>
                                 </div>
-                                <div className="flex-1 min-w-0">
-                                    <p className="text-sm font-medium text-gray-900">
-                                        {bid.status === 'Accepted' ? 'Bid Accepted' : bid.status === 'Pending' ? 'Bid Submitted' : 'Bid Rejected'}:
-                                        ৳{bid.bidAmount.toLocaleString()}
-                                    </p>
-                                    <p className="text-sm text-gray-500">
-                                        {new Date(bid.submittedAt).toLocaleString('en-GB')}
-                                    </p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                )}
+                            ))}
+                        </div>
+                    )}
+                </div>
             </div>
         </div>
     )

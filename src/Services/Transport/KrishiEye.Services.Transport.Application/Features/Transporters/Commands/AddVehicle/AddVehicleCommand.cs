@@ -15,6 +15,7 @@ public record AddVehicleCommand : IRequest<Result<Guid>>
     public string? Model { get; init; }
     public int? ManufactureYear { get; init; }
     public DateTime FitnessExpiryDate { get; init; }
+    public string? FitnessCertificateUrl { get; init; }
 }
 
 public class AddVehicleCommandHandler : IRequestHandler<AddVehicleCommand, Result<Guid>>
@@ -54,7 +55,10 @@ public class AddVehicleCommandHandler : IRequestHandler<AddVehicleCommand, Resul
             CapacityTon = request.CapacityTon,
             Model = request.Model,
             ManufactureYear = request.ManufactureYear,
-            FitnessExpiryDate = request.FitnessExpiryDate
+            FitnessExpiryDate = request.FitnessExpiryDate,
+            DocumentsUrl = !string.IsNullOrEmpty(request.FitnessCertificateUrl) 
+                ? System.Text.Json.JsonSerializer.Serialize(new { fitness = request.FitnessCertificateUrl }) 
+                : null
         };
 
         _context.Vehicles.Add(vehicle);

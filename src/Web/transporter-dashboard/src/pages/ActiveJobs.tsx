@@ -1,5 +1,6 @@
 import { useMyBids } from '../hooks/useTransportApi'
-import { MapPinIcon, TruckIcon, PhoneIcon } from '@heroicons/react/24/outline'
+import { TruckIcon, PhoneIcon } from '@heroicons/react/24/outline'
+import TransportMap from '../components/map/Map'
 
 export default function ActiveJobs() {
     const { data: bidsData, isLoading } = useMyBids()
@@ -52,12 +53,21 @@ export default function ActiveJobs() {
                             </div>
 
                             {/* Map Placeholder */}
-                            <div className="h-64 bg-gray-100 rounded-lg mb-6 flex items-center justify-center">
-                                <div className="text-center">
-                                    <MapPinIcon className="h-12 w-12 text-gray-400 mx-auto mb-2" />
-                                    <p className="text-gray-500">Live tracking map will be integrated here</p>
-                                    <p className="text-sm text-gray-400 mt-1">Using Leaflet + OpenStreetMap</p>
-                                </div>
+                            {/* Map View */}
+                            <div className="h-64 rounded-lg mb-6 overflow-hidden relative z-0">
+                                <TransportMap
+                                    center={[23.8103, 90.4125]} // Default to Dhaka
+                                    zoom={12}
+                                    markers={[
+                                        {
+                                            id: 'current',
+                                            position: [23.8103, 90.4125],
+                                            title: 'Current Location',
+                                            description: 'Vehicle is in transit'
+                                        }
+                                    ]}
+                                    className="h-full w-full"
+                                />
                             </div>
 
                             {/* Job Details */}

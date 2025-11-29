@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KrishiEye.Services.Catalog.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+53ab7b5bd955c43f002a374ad3e2cbc8ebc658dd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a7026c56c1d88bb3c1ca88c693d5cea4eb71c13f")]
 [assembly: System.Reflection.AssemblyProductAttribute("KrishiEye.Services.Catalog.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KrishiEye.Services.Catalog.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

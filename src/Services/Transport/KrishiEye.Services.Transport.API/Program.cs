@@ -35,7 +35,7 @@ try
     var builder = WebApplication.CreateBuilder(args);
 
     // Use Serilog for logging
-    builder.Host.UseSerilog();
+   // builder.Host.UseSerilog();
 
 // Add services to the container
 builder.Services.AddApplicationServices();
@@ -43,6 +43,7 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 builder.Services.AddScoped<INotificationService, NotificationService>();
 builder.Services.AddScoped<ICacheService, CacheService>();
+builder.Services.AddScoped<IFileStorageService, AzureBlobStorageService>();
 builder.Services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<TransportDbContext>());
 
 builder.Services.AddControllers();

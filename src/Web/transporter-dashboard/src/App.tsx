@@ -10,6 +10,7 @@ import CompletedJobs from './pages/CompletedJobs'
 import EarningsReport from './pages/EarningsReport'
 import Drivers from './pages/Drivers'
 import Vehicles from './pages/Vehicles'
+import Settings from './pages/Settings'
 
 function App() {
     return (
@@ -32,7 +33,7 @@ function App() {
                     <Route path="earnings" element={<EarningsReport />} />
                     <Route path="drivers" element={<Drivers />} />
                     <Route path="vehicles" element={<Vehicles />} />
-                    <Route path="settings" element={<div className="text-2xl">Settings - Coming Soon</div>} />
+                    <Route path="settings" element={<Settings />} />
                 </Route>
             </Routes>
         </Router>

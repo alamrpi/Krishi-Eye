@@ -156,6 +156,56 @@ export const transportApi = {
         const response = await apiClient.post('/transport/transporters/vehicles', data)
         return response.data
     },
+
+    // Update driver
+    updateDriver: async (id: string, data: {
+        fullName: string
+        phone: string
+        nidNumber: string
+        licenseNumber: string
+        licenseExpiryDate: string
+        licenseImageUrl: string
+    }) => {
+        const response = await apiClient.put(`/transport/transporters/drivers/${id}`, { ...data, driverId: id })
+        return response.data
+    },
+
+    // Delete driver
+    deleteDriver: async (id: string) => {
+        const response = await apiClient.delete(`/transport/transporters/drivers/${id}`)
+        return response.data
+    },
+
+    // Update vehicle
+    updateVehicle: async (id: string, data: {
+        type: number
+        registrationNumber: string
+        capacityTon: number
+        model?: string
+        manufactureYear?: number
+        fitnessExpiryDate: string
+    }) => {
+        const response = await apiClient.put(`/transport/transporters/vehicles/${id}`, { ...data, vehicleId: id })
+        return response.data
+    },
+
+    // Delete vehicle
+    deleteVehicle: async (id: string) => {
+        const response = await apiClient.delete(`/transport/transporters/vehicles/${id}`)
+        return response.data
+    },
+
+    // Upload file
+    uploadFile: async (file: File) => {
+        const formData = new FormData()
+        formData.append('file', file)
+        const response = await apiClient.post('/transport/files/upload', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+        })
+        return response.data
+    },
 }
 
 export default transportApi

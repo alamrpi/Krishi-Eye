@@ -1,12 +1,17 @@
+import { useState } from 'react'
 import { useMyBids } from '../hooks/useTransportApi'
 import { CheckCircleIcon, CurrencyDollarIcon } from '@heroicons/react/24/outline'
 
 export default function CompletedJobs() {
     const { data: bidsData, isLoading } = useMyBids()
 
+    const [searchQuery, setSearchQuery] = useState('')
+
     // Filter completed jobs
     const completedJobs = bidsData?.value?.filter((bid: any) =>
-        bid.status === 'Accepted' && bid.jobStatus === 'Completed'
+        (bid.status === 'Accepted' && bid.jobStatus === 'Completed') &&
+        (bid.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            (bid.pickupLocation?.thana && bid.pickupLocation.thana.toLowerCase().includes(searchQuery.toLowerCase())))
     ) || []
 
     const totalEarned = completedJobs.reduce((sum: number, job: any) => sum + job.bidAmount, 0)
@@ -22,9 +27,25 @@ export default function CompletedJobs() {
     return (
         <div className="space-y-6">
             {/* Header */}
-            <div>
-                <h1 className="text-2xl font-bold text-gray-900">Completed Jobs</h1>
-                <p className="mt-1 text-sm text-gray-500">View your job history and earnings</p>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                    <h1 className="text-2xl font-bold text-gray-900">Completed Jobs</h1>
+                    <p className="mt-1 text-sm text-gray-500">View your job history and earnings</p>
+                </div>
+                <div className="relative">
+                    <input
+                        type="text"
+                        placeholder="Search by Job ID or Location..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="input-field pl-10 w-full sm:w-64"
+                    />
+                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <svg className="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
+                        </svg>
+                    </div>
+                </div>
             </div>
 
             {/* Summary Cards */}

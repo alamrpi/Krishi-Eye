@@ -1,6 +1,12 @@
 using KrishiEye.Services.Transport.Application.Features.Transporters.Commands.CreateTransporterProfile;
 using KrishiEye.Services.Transport.Application.Features.Transporters.Commands.AddDriver;
+using KrishiEye.Services.Transport.Application.Features.Transporters.Commands.UpdateDriver;
+using KrishiEye.Services.Transport.Application.Features.Transporters.Commands.DeleteDriver;
 using KrishiEye.Services.Transport.Application.Features.Transporters.Commands.AddVehicle;
+using KrishiEye.Services.Transport.Application.Features.Transporters.Commands.UpdateVehicle;
+using KrishiEye.Services.Transport.Application.Features.Transporters.Commands.DeleteVehicle;
+using KrishiEye.Services.Transport.Application.Features.Transporters.Queries.GetDrivers;
+using KrishiEye.Services.Transport.Application.Features.Transporters.Queries.GetVehicles;
 using KrishiEye.Services.Transport.Application.Features.Transporters.Queries.GetNearbyRequests;
 using KrishiEye.Services.Transport.Application.Features.Transporters.Queries.GetEarningsReport;
 using KrishiEye.Services.Transport.Domain.Common;
@@ -35,6 +41,22 @@ public class TransportersController : ControllerBase
         return BadRequest(result.Error);
     }
 
+    // Driver Management
+    [HttpGet("drivers")]
+    [Authorize]
+    public async Task<ActionResult> GetDrivers()
+    {
+        var query = new GetDriversQuery();
+        var result = await _sender.Send(query);
+
+        if (result.IsSuccess)
+        {
+            return Ok(result.Value);
+        }
+
+        return BadRequest(result.Error);
+    }
+
     [HttpPost("drivers")]
     [Authorize]
     public async Task<ActionResult<Guid>> AddDriver(AddDriverCommand command)
@@ -49,10 +71,94 @@ public class TransportersController : ControllerBase
         return BadRequest(result.Error);
     }
 
+    [HttpPut("drivers/{id}")]
+    [Authorize]
+    public async Task<ActionResult> UpdateDriver(Guid id, UpdateDriverCommand command)
+    {
+        if (id != command.DriverId)
+        {
+            return BadRequest("Driver ID mismatch");
+        }
+
+        var result = await _sender.Send(command);
+
+        if (result.IsSuccess)
+        {
+            return Ok(result.Value);
+        }
+
+        return BadRequest(result.Error);
+    }
+
+    [HttpDelete("drivers/{id}")]
+    [Authorize]
+    public async Task<ActionResult> DeleteDriver(Guid id)
+    {
+        var command = new DeleteDriverCommand { DriverId = id };
+        var result = await _sender.Send(command);
+
+        if (result.IsSuccess)
+        {
+            return Ok(result.Value);
+        }
+
+        return BadRequest(result.Error);
+    }
+
+    // Vehicle Management
+    [HttpGet("vehicles")]
+    [Authorize]
+    public async Task<ActionResult> GetVehicles()
+    {
+        var query = new GetVehiclesQuery();
+        var result = await _sender.Send(query);
+
+        if (result.IsSuccess)
+        {
+            return Ok(result.Value);
+        }
+
+        return BadRequest(result.Error);
+    }
+
     [HttpPost("vehicles")]
     [Authorize]
     public async Task<ActionResult<Guid>> AddVehicle(AddVehicleCommand command)
     {
+        var result = await _sender.Send(command);
+
+        if (result.IsSuccess)
+        {
+            return Ok(result.Value);
+        }
+
+        return BadRequest(result.Error);
+    }
+
+    [HttpPut("vehicles/{id}")]
+    [Authorize]
+    public async Task<ActionResult> UpdateVehicle(Guid id, UpdateVehicleCommand command)
+    {
+        if (id != command.VehicleId)
+        {
+            return BadRequest("Vehicle ID mismatch");
+        }
+
+        var result = await _sender.Send(command);
+
+        if (result.IsSuccess)
+        {
+            return Ok(result.Value);
+        }
+
+        return BadRequest(result.Error);
+    }
+
+    [HttpDelete("vehicles/{id}")]
+    [Authorize]
+    public async Task<ActionResult> DeleteVehicle(Guid id)
+    {
+        var command = new DeleteVehicleCommand { VehicleId = id };
         var result = await _sender.Send(command);
 
         if (result.IsSuccess)

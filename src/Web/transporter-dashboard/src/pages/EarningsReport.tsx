@@ -1,5 +1,6 @@
 import { useEarningsReport } from '../hooks/useTransportApi'
-import { ChartBarIcon, CalendarIcon, CurrencyDollarIcon } from '@heroicons/react/24/outline'
+import { CalendarIcon, CurrencyDollarIcon } from '@heroicons/react/24/outline'
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
 
 export default function EarningsReport() {
     const { data: earningsData, isLoading, error } = useEarningsReport()
@@ -76,15 +77,49 @@ export default function EarningsReport() {
                 </div>
             </div>
 
-            {/* Chart Placeholder */}
+            {/* Chart Section */}
             <div className="card">
                 <h2 className="text-lg font-semibold text-gray-900 mb-4">Monthly Earnings Trend</h2>
-                <div className="h-64 bg-gray-100 rounded-lg flex items-center justify-center">
-                    <div className="text-center">
-                        <ChartBarIcon className="h-12 w-12 text-gray-400 mx-auto mb-2" />
-                        <p className="text-gray-500">Chart will be integrated here</p>
-                        <p className="text-sm text-gray-400 mt-1">Using Chart.js or Recharts</p>
-                    </div>
+                <div className="h-80 w-full">
+                    <ResponsiveContainer width="100%" height="100%">
+                        <AreaChart
+                            data={[
+                                { name: 'Jan', amount: 4000 },
+                                { name: 'Feb', amount: 3000 },
+                                { name: 'Mar', amount: 2000 },
+                                { name: 'Apr', amount: 2780 },
+                                { name: 'May', amount: 1890 },
+                                { name: 'Jun', amount: 2390 },
+                                { name: 'Jul', amount: 3490 },
+                                { name: 'Aug', amount: 4200 },
+                                { name: 'Sep', amount: 5100 },
+                                { name: 'Oct', amount: 4800 },
+                                { name: 'Nov', amount: earnings.totalEarnings || 6000 },
+                            ]}
+                            margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+                        >
+                            <defs>
+                                <linearGradient id="colorAmount" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="5%" stopColor="#10B981" stopOpacity={0.8} />
+                                    <stop offset="95%" stopColor="#10B981" stopOpacity={0} />
+                                </linearGradient>
+                            </defs>
+                            <XAxis dataKey="name" />
+                            <YAxis />
+                            <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                            <Tooltip
+                                formatter={(value: number) => [`৳${value.toLocaleString()}`, 'Earnings']}
+                                contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
+                            />
+                            <Area
+                                type="monotone"
+                                dataKey="amount"
+                                stroke="#10B981"
+                                fillOpacity={1}
+                                fill="url(#colorAmount)"
+                            />
+                        </AreaChart>
+                    </ResponsiveContainer>
                 </div>
             </div>
 

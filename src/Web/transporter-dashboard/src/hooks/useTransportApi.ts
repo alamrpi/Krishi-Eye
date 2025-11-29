@@ -107,3 +107,88 @@ export const useAddVehicle = () => {
         },
     })
 }
+
+export const useUpdateDriver = () => {
+    const queryClient = useQueryClient()
+
+    return useMutation({
+        mutationFn: (data: {
+            id: string
+            fullName: string
+            phone: string
+            nidNumber: string
+            licenseNumber: string
+            licenseExpiryDate: string
+            licenseImageUrl: string
+        }) => transportApi.updateDriver(data.id, data),
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: queryKeys.drivers })
+            notify.success('Driver updated successfully! 👨‍✈️')
+        },
+        onError: (error: any) => {
+            handleApiError(error, 'Failed to update driver')
+        },
+    })
+}
+
+export const useDeleteDriver = () => {
+    const queryClient = useQueryClient()
+
+    return useMutation({
+        mutationFn: (id: string) => transportApi.deleteDriver(id),
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: queryKeys.drivers })
+            notify.success('Driver deleted successfully! 🗑️')
+        },
+        onError: (error: any) => {
+            handleApiError(error, 'Failed to delete driver')
+        },
+    })
+}
+
+export const useUpdateVehicle = () => {
+    const queryClient = useQueryClient()
+
+    return useMutation({
+        mutationFn: (data: {
+            id: string
+            type: number
+            registrationNumber: string
+            capacityTon: number
+            model?: string
+            manufactureYear?: number
+            fitnessExpiryDate: string
+        }) => transportApi.updateVehicle(data.id, data),
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: queryKeys.vehicles })
+            notify.success('Vehicle updated successfully! 🚛')
+        },
+        onError: (error: any) => {
+            handleApiError(error, 'Failed to update vehicle')
+        },
+    })
+}
+
+export const useDeleteVehicle = () => {
+    const queryClient = useQueryClient()
+
+    return useMutation({
+        mutationFn: (id: string) => transportApi.deleteVehicle(id),
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: queryKeys.vehicles })
+            notify.success('Vehicle deleted successfully! 🗑️')
+        },
+        onError: (error: any) => {
+            handleApiError(error, 'Failed to delete vehicle')
+        },
+    })
+}
+
+export const useUploadFile = () => {
+    return useMutation({
+        mutationFn: (file: File) => transportApi.uploadFile(file),
+        onError: (error: any) => {
+            handleApiError(error, 'Failed to upload file')
+        },
+    })
+}

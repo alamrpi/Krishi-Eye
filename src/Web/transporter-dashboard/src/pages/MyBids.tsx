@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useMyBids } from '../hooks/useTransportApi'
 import { CheckCircleIcon, ClockIcon, XCircleIcon } from '@heroicons/react/24/outline'
 
@@ -25,7 +26,14 @@ export default function MyBids() {
         )
     }
 
+    const [statusFilter, setStatusFilter] = useState('All')
+
     const bids = bidsData?.value || []
+
+    const filteredBids = bids.filter((bid: any) =>
+        statusFilter === 'All' || bid.status === statusFilter
+    )
+
     const pendingBids = bids.filter((b: any) => b.status === 'Pending')
     const acceptedBids = bids.filter((b: any) => b.status === 'Accepted')
     const rejectedBids = bids.filter((b: any) => b.status === 'Rejected')
@@ -33,9 +41,23 @@ export default function MyBids() {
     return (
         <div className="space-y-6">
             {/* Header */}
-            <div>
-                <h1 className="text-2xl font-bold text-gray-900">My Bids</h1>
-                <p className="mt-1 text-sm text-gray-500">Track all your submitted bids</p>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                    <h1 className="text-2xl font-bold text-gray-900">My Bids</h1>
+                    <p className="mt-1 text-sm text-gray-500">Track all your submitted bids</p>
+                </div>
+                <div>
+                    <select
+                        value={statusFilter}
+                        onChange={(e) => setStatusFilter(e.target.value)}
+                        className="input-field w-full sm:w-48"
+                    >
+                        <option value="All">All Status</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Accepted">Accepted</option>
+                        <option value="Rejected">Rejected</option>
+                    </select>
+                </div>
             </div>
 
             {/* Stats */}
@@ -56,13 +78,13 @@ export default function MyBids() {
 
             {/* Bids List */}
             <div className="card">
-                {bids.length === 0 ? (
+                {filteredBids.length === 0 ? (
                     <div className="text-center py-12">
                         <p className="text-gray-600">No bids submitted yet</p>
                     </div>
                 ) : (
                     <div className="space-y-4">
-                        {bids.map((bid: any) => (
+                        {filteredBids.map((bid: any) => (
                             <div
                                 key={bid.id}
                                 className="p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"

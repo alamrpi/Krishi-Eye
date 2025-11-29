@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import { useVehicles, useAddVehicle } from '../hooks/useTransportApi'
-import { PlusIcon, TruckIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { useVehicles, useAddVehicle, useUpdateVehicle, useDeleteVehicle } from '../hooks/useTransportApi'
+import { PlusIcon, TruckIcon, XMarkIcon, PencilSquareIcon, TrashIcon } from '@heroicons/react/24/outline'
+import FileUpload from '../components/common/FileUpload'
 
 const VEHICLE_TYPES = [
     { value: 1, label: 'Pickup (1 Ton)', capacity: 1 },
@@ -13,7 +14,13 @@ const VEHICLE_TYPES = [
 export default function Vehicles() {
     const { data: vehiclesData, isLoading, error } = useVehicles()
     const addVehicle = useAddVehicle()
+    const updateVehicle = useUpdateVehicle()
+    const deleteVehicle = useDeleteVehicle()
+
     const [isAddModalOpen, setIsAddModalOpen] = useState(false)
+    const [isEditModalOpen, setIsEditModalOpen] = useState(false)
+    const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
+    const [selectedVehicleId, setSelectedVehicleId] = useState<string | null>(null)
 
     // Form state
     const [formData, setFormData] = useState({
@@ -23,9 +30,23 @@ export default function Vehicles() {
         model: '',
         manufactureYear: new Date().getFullYear(),
         fitnessExpiryDate: '',
+        fitnessCertificateUrl: '',
     })
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const resetForm = () => {
+        setFormData({
+            type: 1,
+            registrationNumber: '',
+            capacityTon: 1,
+            model: '',
+            manufactureYear: new Date().getFullYear(),
+            fitnessExpiryDate: '',
+            fitnessCertificateUrl: '',
+        })
+        setSelectedVehicleId(null)
+    }
+
+    const handleAddSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
         try {
             await addVehicle.mutateAsync({
@@ -37,14 +58,59 @@ export default function Vehicles() {
                 fitnessExpiryDate: formData.fitnessExpiryDate,
             })
             setIsAddModalOpen(false)
-            setFormData({
-                type: 1,
-                registrationNumber: '',
-                capacityTon: 1,
-                model: '',
-                manufactureYear: new Date().getFullYear(),
-                fitnessExpiryDate: '',
+            resetForm()
+        } catch (error) {
+            // Error handled by mutation
+        }
+    }
+
+    const handleEditClick = (vehicle: any) => {
+        setSelectedVehicleId(vehicle.id)
+        setFormData({
+            type: vehicle.type,
+            registrationNumber: vehicle.regNumber,
+            capacityTon: vehicle.capacityTon,
+            model: vehicle.model || '',
+            manufactureYear: vehicle.manufactureYear || new Date().getFullYear(),
+            fitnessExpiryDate: vehicle.fitnessExpiryDate.split('T')[0],
+            fitnessCertificateUrl: vehicle.documentsUrl ? JSON.parse(vehicle.documentsUrl).fitness : '',
+        })
+        setIsEditModalOpen(true)
+    }
+
+    const handleUpdateSubmit = async (e: React.FormEvent) => {
+        e.preventDefault()
+        if (!selectedVehicleId) return
+
+        try {
+            await updateVehicle.mutateAsync({
+                id: selectedVehicleId,
+                type: formData.type,
+                registrationNumber: formData.registrationNumber,
+                capacityTon: formData.capacityTon,
+                model: formData.model || undefined,
+                manufactureYear: formData.manufactureYear || undefined,
+                fitnessExpiryDate: formData.fitnessExpiryDate,
             })
+            setIsEditModalOpen(false)
+            resetForm()
+        } catch (error) {
+            // Error handled by mutation
+        }
+    }
+
+    const handleDeleteClick = (id: string) => {
+        setSelectedVehicleId(id)
+        setIsDeleteModalOpen(true)
+    }
+
+    const confirmDelete = async () => {
+        if (!selectedVehicleId) return
+
+        try {
+            await deleteVehicle.mutateAsync(selectedVehicleId)
+            setIsDeleteModalOpen(false)
+            setSelectedVehicleId(null)
         } catch (error) {
             // Error handled by mutation
         }
@@ -68,7 +134,14 @@ export default function Vehicles() {
         )
     }
 
+    const [searchQuery, setSearchQuery] = useState('')
+
     const vehicles = vehiclesData?.value || []
+
+    const filteredVehicles = vehicles.filter((vehicle: any) =>
+        vehicle.regNumber.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (vehicle.model && vehicle.model.toLowerCase().includes(searchQuery.toLowerCase()))
+    )
 
     const getVehicleTypeLabel = (type: number) => {
         return VEHICLE_TYPES.find(t => t.value === type)?.label || 'Unknown'
@@ -88,54 +161,76 @@ export default function Vehicles() {
     return (
         <div className="space-y-6">
             {/* Header */}
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
                     <h1 className="text-2xl font-bold text-gray-900">Vehicles Management</h1>
                     <p className="mt-1 text-sm text-gray-500">Manage your vehicle fleet</p>
                 </div>
-                <button
-                    onClick={() => setIsAddModalOpen(true)}
-                    className="btn-primary flex items-center gap-x-2"
-                >
-                    <PlusIcon className="h-5 w-5" />
-                    Add Vehicle
-                </button>
+                <div className="flex items-center gap-x-4">
+                    <div className="relative">
+                        <input
+                            type="text"
+                            placeholder="Search vehicles..."
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            className="input-field pl-10 w-full sm:w-64"
+                        />
+                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <svg className="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
+                            </svg>
+                        </div>
+                    </div>
+                    <button
+                        onClick={() => {
+                            resetForm()
+                            setIsAddModalOpen(true)
+                        }}
+                        className="btn-primary flex items-center gap-x-2 whitespace-nowrap"
+                    >
+                        <PlusIcon className="h-5 w-5" />
+                        Add Vehicle
+                    </button>
+                </div>
             </div>
 
             {/* Stats */}
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-4">
                 <div className="stat-card border-blue-500">
                     <p className="text-sm font-medium text-gray-500">Total Vehicles</p>
-                    <p className="mt-2 text-3xl font-semibold text-gray-900">{vehicles.length}</p>
+                    <p className="mt-2 text-3xl font-semibold text-gray-900">{filteredVehicles.length}</p>
                 </div>
                 <div className="stat-card border-green-500">
                     <p className="text-sm font-medium text-gray-500">Available</p>
                     <p className="mt-2 text-3xl font-semibold text-gray-900">
-                        {vehicles.filter((v: any) => v.isAvailable).length}
+                        {filteredVehicles.filter((v: any) => v.isAvailable).length}
                     </p>
                 </div>
                 <div className="stat-card border-yellow-500">
                     <p className="text-sm font-medium text-gray-500">In Use</p>
                     <p className="mt-2 text-3xl font-semibold text-gray-900">
-                        {vehicles.filter((v: any) => !v.isAvailable).length}
+                        {filteredVehicles.filter((v: any) => !v.isAvailable).length}
                     </p>
                 </div>
                 <div className="stat-card border-purple-500">
                     <p className="text-sm font-medium text-gray-500">Total Capacity</p>
                     <p className="mt-2 text-3xl font-semibold text-gray-900">
-                        {vehicles.reduce((sum: number, v: any) => sum + (v.capacityTon || 0), 0)} ton
+                        {filteredVehicles.reduce((sum: number, v: any) => sum + (v.capacityTon || 0), 0)} ton
                     </p>
                 </div>
             </div>
 
             {/* Vehicles Grid */}
             <div className="card">
-                {vehicles.length === 0 ? (
+                {filteredVehicles.length === 0 ? (
                     <div className="text-center py-12">
                         <TruckIcon className="h-12 w-12 text-gray-400 mx-auto mb-4" />
                         <p className="text-gray-600">No vehicles added yet</p>
                         <button
-                            onClick={() => setIsAddModalOpen(true)}
+                            onClick={() => {
+                                resetForm()
+                                setIsAddModalOpen(true)
+                            }}
                             className="btn-primary mt-4"
                         >
                             Add Your First Vehicle
@@ -143,7 +238,7 @@ export default function Vehicles() {
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {vehicles.map((vehicle: any) => (
+                        {filteredVehicles.map((vehicle: any) => (
                             <div
                                 key={vehicle.id}
                                 className="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow"
@@ -193,8 +288,19 @@ export default function Vehicles() {
                                 </div>
 
                                 {/* Actions */}
-                                <div className="mt-4 pt-4 border-t border-gray-200">
-                                    <button className="w-full btn-outline text-sm py-2 text-red-600 hover:bg-red-50 border-red-200">
+                                <div className="mt-4 pt-4 border-t border-gray-200 flex gap-2">
+                                    <button
+                                        onClick={() => handleEditClick(vehicle)}
+                                        className="flex-1 btn-outline text-sm py-2 flex items-center justify-center gap-2"
+                                    >
+                                        <PencilSquareIcon className="h-4 w-4" />
+                                        Edit
+                                    </button>
+                                    <button
+                                        onClick={() => handleDeleteClick(vehicle.id)}
+                                        className="flex-1 btn-outline text-sm py-2 text-red-600 hover:bg-red-50 border-red-200 flex items-center justify-center gap-2"
+                                    >
+                                        <TrashIcon className="h-4 w-4" />
                                         Delete
                                     </button>
                                 </div>
@@ -204,21 +310,27 @@ export default function Vehicles() {
                 )}
             </div>
 
-            {/* Add Vehicle Modal */}
-            {isAddModalOpen && (
+            {/* Add/Edit Vehicle Modal */}
+            {(isAddModalOpen || isEditModalOpen) && (
                 <div className="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center z-50 p-4">
                     <div className="bg-white rounded-lg p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
                         <div className="flex items-center justify-between mb-6">
-                            <h3 className="text-xl font-semibold text-gray-900">Add New Vehicle</h3>
+                            <h3 className="text-xl font-semibold text-gray-900">
+                                {isEditModalOpen ? 'Edit Vehicle' : 'Add New Vehicle'}
+                            </h3>
                             <button
-                                onClick={() => setIsAddModalOpen(false)}
+                                onClick={() => {
+                                    setIsAddModalOpen(false)
+                                    setIsEditModalOpen(false)
+                                    resetForm()
+                                }}
                                 className="text-gray-400 hover:text-gray-600"
                             >
                                 <XMarkIcon className="h-6 w-6" />
                             </button>
                         </div>
 
-                        <form onSubmit={handleSubmit} className="space-y-4">
+                        <form onSubmit={isEditModalOpen ? handleUpdateSubmit : handleAddSubmit} className="space-y-4">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
                                     <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -314,25 +426,77 @@ export default function Vehicles() {
                                         className="input"
                                     />
                                 </div>
+
+                                <div className="col-span-1 md:col-span-2">
+                                    <FileUpload
+                                        label="Fitness Certificate"
+                                        onUploadComplete={(url) => setFormData({ ...formData, fitnessCertificateUrl: url })}
+                                        currentFileUrl={formData.fitnessCertificateUrl}
+                                    />
+                                </div>
                             </div>
 
                             <div className="flex gap-3 pt-4">
                                 <button
                                     type="button"
-                                    onClick={() => setIsAddModalOpen(false)}
+                                    onClick={() => {
+                                        setIsAddModalOpen(false)
+                                        setIsEditModalOpen(false)
+                                        resetForm()
+                                    }}
                                     className="flex-1 btn-outline"
                                 >
                                     Cancel
                                 </button>
                                 <button
                                     type="submit"
-                                    disabled={addVehicle.isPending}
+                                    disabled={addVehicle.isPending || updateVehicle.isPending}
                                     className="flex-1 btn-primary disabled:opacity-50"
                                 >
-                                    {addVehicle.isPending ? 'Adding...' : 'Add Vehicle'}
+                                    {isEditModalOpen
+                                        ? (updateVehicle.isPending ? 'Updating...' : 'Update Vehicle')
+                                        : (addVehicle.isPending ? 'Adding...' : 'Add Vehicle')
+                                    }
                                 </button>
                             </div>
                         </form>
+                    </div>
+                </div>
+            )}
+
+            {/* Delete Confirmation Modal */}
+            {isDeleteModalOpen && (
+                <div className="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center z-50 p-4">
+                    <div className="bg-white rounded-lg p-6 max-w-sm w-full">
+                        <div className="text-center">
+                            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-red-100">
+                                <TrashIcon className="h-6 w-6 text-red-600" />
+                            </div>
+                            <h3 className="mt-4 text-lg font-semibold text-gray-900">Delete Vehicle</h3>
+                            <p className="mt-2 text-sm text-gray-500">
+                                Are you sure you want to delete this vehicle? This action cannot be undone.
+                            </p>
+                        </div>
+                        <div className="mt-6 flex gap-3">
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    setIsDeleteModalOpen(false)
+                                    setSelectedVehicleId(null)
+                                }}
+                                className="flex-1 btn-outline"
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                type="button"
+                                onClick={confirmDelete}
+                                disabled={deleteVehicle.isPending}
+                                className="flex-1 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 disabled:opacity-50"
+                            >
+                                {deleteVehicle.isPending ? 'Deleting...' : 'Delete'}
+                            </button>
+                        </div>
                     </div>
                 </div>
             )}
