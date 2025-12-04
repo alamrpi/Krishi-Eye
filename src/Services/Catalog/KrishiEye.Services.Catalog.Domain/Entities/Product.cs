@@ -1,110 +1,48 @@
-using KrishiEye.Services.Catalog.Domain.Common;
-using KrishiEye.Services.Catalog.Domain.ValueObjects;
+using System;
+using System.Collections.Generic;
 
-namespace KrishiEye.Services.Catalog.Domain.Entities;
-
-/// <summary>
-/// Represents a product in the catalog with rich domain logic.
-/// </summary>
-public sealed class Product : BaseEntity, ISeoEnabled
+namespace KrishiEye.Services.Catalog.Domain.Entities
 {
-    public string Name { get; private set; }
-    public string Description { get; private set; }
-    public Money Price { get; private set; }
-    public int StockQuantity { get; private set; }
-    public Guid UnitId { get; private set; }
-    public string ImageUrl { get; private set; }
-    public Guid SellerId { get; private set; }
-    public Guid ProductTypeId { get; private set; }
-    public Guid CategoryId { get; private set; }
-    public SeoMetadata SeoMetadata { get; private set; }
-
-    // Navigation properties
-    public ProductType ProductType { get; private set; } = null!;
-    public Category Category { get; private set; } = null!;
-    public MeasurementUnit Unit { get; private set; } = null!;
-
-    private Product() : base() { } // EF Core
-
-    private Product(
-        string name,
-        string description,
-        Money price,
-        int stockQuantity,
-        Guid unitId,
-        string imageUrl,
-        Guid sellerId,
-        Guid productTypeId,
-        Guid categoryId,
-        SeoMetadata seoMetadata) : base()
+    public class Product
     {
-        if (string.IsNullOrWhiteSpace(name))
-            throw new ArgumentException("Product name cannot be empty", nameof(name));
-
-        if (stockQuantity < 0)
-            throw new ArgumentException("Stock quantity cannot be negative", nameof(stockQuantity));
-
-        Name = name;
-        Description = description;
-        Price = price;
-        StockQuantity = stockQuantity;
-        UnitId = unitId;
-        ImageUrl = imageUrl;
-        SellerId = sellerId;
-        ProductTypeId = productTypeId;
-        CategoryId = categoryId;
-        SeoMetadata = seoMetadata;
+        public Guid Id { get; set; }
+        public Guid OwnerId { get; set; } // User who listed the product
+        public string Title { get; set; } = string.Empty;
+        public string Slug { get; set; } = string.Empty; // SEO Friendly URL
+        public string Description { get; set; } = string.Empty;
+        public string? MetaTitle { get; set; }
+        public string? MetaDescription { get; set; }
+        public string? MetaKeywords { get; set; }
+        public decimal Price { get; set; }
+        public Guid UnitId { get; set; }
+        public MeasurementUnit? MeasurementUnit { get; set; }
+        public decimal StockQuantity { get; set; }
+        public Guid CategoryId { get; set; }
+        public Category Category { get; set; } = null!;
+        public List<string> Images { get; set; } = new List<string>(); // JSONB
+        public Location? Location { get; set; } // JSONB
+        public bool IsTransportIncluded { get; set; }
+        public bool IsPublished { get; set; }
+        public bool IsActive { get; set; } = true;
+        public ProductStatus Status { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
     }
 
-    public static Product Create(
-        string name,
-        string description,
-        Money price,
-        int stockQuantity,
-        Guid unitId,
-        string imageUrl,
-        Guid sellerId,
-        Guid productTypeId,
-        Guid categoryId,
-        SeoMetadata seoMetadata)
+    public enum ProductStatus
     {
-        return new Product(name, description, price, stockQuantity, unitId, imageUrl, sellerId, productTypeId, categoryId, seoMetadata);
+        Draft,
+        Active,
+        OutOfStock,
+        Archived
     }
 
-    // Business logic methods
-    public void UpdatePrice(Money newPrice)
+    public class Location
     {
-        if (newPrice.Amount <= 0)
-            throw new ArgumentException("Price must be greater than zero");
-
-        if (newPrice.Currency != Price.Currency)
-            throw new InvalidOperationException($"Cannot change currency from {Price.Currency} to {newPrice.Currency}");
-
-        Price = newPrice;
-        MarkAsUpdated();
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
+        public string Address { get; set; } = string.Empty;
+        public string City { get; set; } = string.Empty;
+        public string Division { get; set; } = string.Empty;
     }
-
-    public void AddStock(int quantity)
-    {
-        if (quantity <= 0)
-            throw new ArgumentException("Quantity must be positive", nameof(quantity));
-
-        StockQuantity += quantity;
-        MarkAsUpdated();
-    }
-
-    public void RemoveStock(int quantity)
-    {
-        if (quantity <= 0)
-            throw new ArgumentException("Quantity must be positive", nameof(quantity));
-
-        if (StockQuantity < quantity)
-            throw new InvalidOperationException($"Insufficient stock. Available: {StockQuantity}, Requested: {quantity}");
-
-        StockQuantity -= quantity;
-        MarkAsUpdated();
-    }
-
-    public bool IsInStock() => StockQuantity > 0;
-    public bool IsOutOfStock() => StockQuantity == 0;
 }

@@ -4,6 +4,7 @@ using KrishiEye.Services.Transport.Domain.Common;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace KrishiEye.Services.Transport.API.Controllers;
 
@@ -12,10 +13,12 @@ namespace KrishiEye.Services.Transport.API.Controllers;
 public class TransportRequestsController : ControllerBase
 {
     private readonly ISender _sender;
+    private readonly KrishiEye.Services.Transport.Infrastructure.Data.TransportDbContext _context;
 
-    public TransportRequestsController(ISender sender)
+    public TransportRequestsController(ISender sender, KrishiEye.Services.Transport.Infrastructure.Data.TransportDbContext context)
     {
         _sender = sender;
+        _context = context;
     }
 
     [HttpPost]
@@ -30,6 +33,20 @@ public class TransportRequestsController : ControllerBase
         }
 
         return BadRequest(result.Error);
+    }
+
+    [HttpGet]
+    [Authorize]
+    public async Task<ActionResult<IEnumerable<Domain.Entities.TransportRequest>>> GetTransportRequests()
+    {
+        var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+        if (string.IsNullOrEmpty(userId)) return Unauthorized();
+
+        var requests = await _context.TransportRequests
+            .Where(r => r.RequesterId == Guid.Parse(userId))
+            .ToListAsync();
+
+        return Ok(requests);
     }
 
     [HttpGet("{requestId}")]

@@ -1,71 +1,52 @@
-using KrishiEye.Services.Catalog.Application.Units.Commands.CreateUnit;
-using KrishiEye.Services.Catalog.Application.Units.Commands.UpdateUnit;
-using KrishiEye.Services.Catalog.Application.Units.Commands.DeleteUnit;
-using KrishiEye.Services.Catalog.Application.Units.Queries.GetAllUnits;
-using KrishiEye.Services.Catalog.Application.Units.Queries.GetUnitById;
-using KrishiEye.Services.Catalog.Application.Units.Common;
-using MediatR;
+using KrishiEye.Services.Catalog.Domain.Entities;
+using KrishiEye.Services.Catalog.Infrastructure.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
-namespace KrishiEye.Services.Catalog.API.Controllers;
-
-[ApiController]
-[Route("api/[controller]")]
-public class UnitsController : ControllerBase
+namespace KrishiEye.Services.Catalog.API.Controllers
 {
-    private readonly IMediator _mediator;
-
-    public UnitsController(IMediator mediator)
+    [ApiController]
+    [Route("api/[controller]")]
+    public class UnitsController : ControllerBase
     {
-        _mediator = mediator;
-    }
+        private readonly CatalogDbContext _context;
 
-    [HttpGet]
-    public async Task<ActionResult<List<UnitDto>>> GetAll()
-    {
-        var result = await _mediator.Send(new GetAllUnitsQuery());
-        return Ok(result);
-    }
+        public UnitsController(CatalogDbContext context)
+        {
+            _context = context;
+        }
 
-    [HttpPost]
-    public async Task<ActionResult<Guid>> Create([FromBody] CreateUnitCommand command)
-    {
-        var id = await _mediator.Send(command);
-        return CreatedAtAction(nameof(GetById), new { id }, id);
-    }
+        [HttpGet("user/units")]
+        [Authorize]
+        public async Task<ActionResult<IEnumerable<MeasurementUnit>>> GetUnits()
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userId)) return Unauthorized();
 
-    [HttpGet("{id}")]
-    public async Task<ActionResult<UnitDto>> GetById(Guid id)
-    {
-        var result = await _mediator.Send(new GetUnitByIdQuery(id));
-        if (result == null)
-            return NotFound();
+            var ownerId = Guid.Parse(userId);
 
-        return Ok(result);
-    }
+            // Return Global units + User's own units
+            return await _context.MeasurementUnits
+                .Where(u => u.IsGlobal || u.OwnerId == ownerId)
+                .ToListAsync();
+        }
 
-    [HttpPut("{id}")]
-    public async Task<IActionResult> Update(Guid id, [FromBody] UpdateUnitRequest request)
-    {
-        var command = new UpdateUnitCommand(
-            id,
-            request.Name,
-            request.Symbol,
-            (Domain.Entities.UnitType)request.UnitType);
+        [HttpPost("user/units")]
+        [Authorize]
+        public async Task<ActionResult<MeasurementUnit>> CreateUnit(MeasurementUnit unit)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userId)) return Unauthorized();
 
-        await _mediator.Send(command);
-        return NoContent();
-    }
+            unit.OwnerId = Guid.Parse(userId);
+            unit.IsGlobal = false;
 
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete(Guid id)
-    {
-        await _mediator.Send(new DeleteUnitCommand(id));
-        return NoContent();
+            _context.MeasurementUnits.Add(unit);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetUnits), new { id = unit.Id }, unit);
+        }
     }
 }
-
-public record UpdateUnitRequest(
-    string Name,
-    string Symbol,
-    int UnitType);

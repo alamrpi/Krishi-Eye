@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.API\\KrishiEye.Services.Transport.API.csproj": {}
+    "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.API\\KrishiEye.Services.Transport.API.csproj": {}
   },
   "projects": {
-    "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.API\\KrishiEye.Services.Transport.API.csproj": {
+    "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.API\\KrishiEye.Services.Transport.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.API\\KrishiEye.Services.Transport.API.csproj",
+        "projectUniqueName": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.API\\KrishiEye.Services.Transport.API.csproj",
         "projectName": "KrishiEye.Services.Transport.API",
-        "projectPath": "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.API\\KrishiEye.Services.Transport.API.csproj",
+        "projectPath": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.API\\KrishiEye.Services.Transport.API.csproj",
         "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-        "outputPath": "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.API\\obj\\",
+        "outputPath": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,11 +32,11 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Application\\KrishiEye.Services.Transport.Application.csproj": {
-                "projectPath": "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Application\\KrishiEye.Services.Transport.Application.csproj"
+              "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Application\\KrishiEye.Services.Transport.Application.csproj": {
+                "projectPath": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Application\\KrishiEye.Services.Transport.Application.csproj"
               },
-              "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Infrastructure\\KrishiEye.Services.Transport.Infrastructure.csproj": {
-                "projectPath": "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Infrastructure\\KrishiEye.Services.Transport.Infrastructure.csproj"
+              "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Infrastructure\\KrishiEye.Services.Transport.Infrastructure.csproj": {
+                "projectPath": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Infrastructure\\KrishiEye.Services.Transport.Infrastructure.csproj"
               }
             }
           }
@@ -119,14 +119,14 @@
         }
       }
     },
-    "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Application\\KrishiEye.Services.Transport.Application.csproj": {
+    "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Application\\KrishiEye.Services.Transport.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Application\\KrishiEye.Services.Transport.Application.csproj",
+        "projectUniqueName": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Application\\KrishiEye.Services.Transport.Application.csproj",
         "projectName": "KrishiEye.Services.Transport.Application",
-        "projectPath": "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Application\\KrishiEye.Services.Transport.Application.csproj",
+        "projectPath": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Application\\KrishiEye.Services.Transport.Application.csproj",
         "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-        "outputPath": "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Application\\obj\\",
+        "outputPath": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -147,8 +147,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Domain\\KrishiEye.Services.Transport.Domain.csproj": {
-                "projectPath": "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Domain\\KrishiEye.Services.Transport.Domain.csproj"
+              "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Domain\\KrishiEye.Services.Transport.Domain.csproj": {
+                "projectPath": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Domain\\KrishiEye.Services.Transport.Domain.csproj"
               }
             }
           }
@@ -214,14 +214,14 @@
         }
       }
     },
-    "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Domain\\KrishiEye.Services.Transport.Domain.csproj": {
+    "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Domain\\KrishiEye.Services.Transport.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Domain\\KrishiEye.Services.Transport.Domain.csproj",
+        "projectUniqueName": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Domain\\KrishiEye.Services.Transport.Domain.csproj",
         "projectName": "KrishiEye.Services.Transport.Domain",
-        "projectPath": "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Domain\\KrishiEye.Services.Transport.Domain.csproj",
+        "projectPath": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Domain\\KrishiEye.Services.Transport.Domain.csproj",
         "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-        "outputPath": "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Domain\\obj\\",
+        "outputPath": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -279,14 +279,14 @@
         }
       }
     },
-    "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Infrastructure\\KrishiEye.Services.Transport.Infrastructure.csproj": {
+    "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Infrastructure\\KrishiEye.Services.Transport.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Infrastructure\\KrishiEye.Services.Transport.Infrastructure.csproj",
+        "projectUniqueName": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Infrastructure\\KrishiEye.Services.Transport.Infrastructure.csproj",
         "projectName": "KrishiEye.Services.Transport.Infrastructure",
-        "projectPath": "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Infrastructure\\KrishiEye.Services.Transport.Infrastructure.csproj",
+        "projectPath": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Infrastructure\\KrishiEye.Services.Transport.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-        "outputPath": "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Infrastructure\\obj\\",
+        "outputPath": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -307,11 +307,11 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Application\\KrishiEye.Services.Transport.Application.csproj": {
-                "projectPath": "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Application\\KrishiEye.Services.Transport.Application.csproj"
+              "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Application\\KrishiEye.Services.Transport.Application.csproj": {
+                "projectPath": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Application\\KrishiEye.Services.Transport.Application.csproj"
               },
-              "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Domain\\KrishiEye.Services.Transport.Domain.csproj": {
-                "projectPath": "d:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Domain\\KrishiEye.Services.Transport.Domain.csproj"
+              "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Domain\\KrishiEye.Services.Transport.Domain.csproj": {
+                "projectPath": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Transport\\KrishiEye.Services.Transport.Domain\\KrishiEye.Services.Transport.Domain.csproj"
               }
             }
           }

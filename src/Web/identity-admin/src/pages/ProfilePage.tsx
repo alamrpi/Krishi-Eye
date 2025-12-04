@@ -13,7 +13,7 @@ const ProfilePage = () => {
     const { user: authUser, logout } = useAuthStore();
     const [activeTab, setActiveTab] = useState<'view' | 'edit' | 'password' | '2fa'>('view');
     const [user, setUser] = useState<User | null>(authUser);
-    const [isLoading, setIsLoading] = useState(false);
+
 
     // Fetch fresh user data
     useEffect(() => {

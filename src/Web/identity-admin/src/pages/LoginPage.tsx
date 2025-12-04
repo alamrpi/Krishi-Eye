@@ -6,15 +6,26 @@ import { ROUTES } from '../shared/constants';
 const LoginPage: React.FC = () => {
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
-    const login = useAuthStore((state) => state.login);
+    const { login, isAuthenticated, accessToken } = useAuthStore();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false);
 
-    // Get returnUrl from query parameter
-    const returnUrl = searchParams.get('returnUrl');
+    // Get callback url from query parameter
+    const callbackUrl = searchParams.get('callback') || searchParams.get('returnUrl');
+
+    // Handle auto-redirect if already authenticated
+    React.useEffect(() => {
+        if (isAuthenticated && accessToken && callbackUrl) {
+            const url = new URL(decodeURIComponent(callbackUrl));
+            url.searchParams.set('token', accessToken);
+            window.location.href = url.toString();
+        } else if (isAuthenticated && !callbackUrl) {
+            navigate(ROUTES.DASHBOARD);
+        }
+    }, [isAuthenticated, accessToken, callbackUrl, navigate]);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -24,11 +35,11 @@ const LoginPage: React.FC = () => {
         try {
             const result = await login({ email, password });
 
-            // If returnUrl exists, redirect to it with token
-            if (returnUrl) {
-                // Parse returnUrl to add token as query parameter
-                const url = new URL(decodeURIComponent(returnUrl));
-                url.searchParams.set('token', result.token);
+            // If callbackUrl exists, redirect to it with token
+            if (callbackUrl) {
+                // Parse callbackUrl to add token as query parameter
+                const url = new URL(decodeURIComponent(callbackUrl));
+                url.searchParams.set('token', result.accessToken);
                 window.location.href = url.toString();
             } else {
                 // Default redirect to admin dashboard

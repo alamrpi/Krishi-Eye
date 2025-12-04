@@ -3,15 +3,15 @@
     "Name": "New Profile",
     "Projects": [
       {
-        "Path": "src\\Services\\Catalog\\KrishiEye.Services.Catalog.API\\KrishiEye.Services.Catalog.API.csproj",
-        "Action": "Start"
-      },
-      {
         "Path": "src\\Gateways\\KrishiEye.ApiGateway\\KrishiEye.ApiGateway.csproj",
         "Action": "Start"
       },
       {
         "Path": "src\\Services\\Identity\\KrishiEye.Services.Identity.API\\KrishiEye.Services.Identity.API.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "src\\Services\\Transport\\KrishiEye.Services.Transport.API\\KrishiEye.Services.Transport.API.csproj",
         "Action": "Start"
       }
     ]

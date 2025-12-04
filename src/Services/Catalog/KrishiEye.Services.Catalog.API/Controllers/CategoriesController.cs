@@ -1,75 +1,35 @@
-using KrishiEye.Services.Catalog.Application.Categories.Commands.CreateCategory;
-using KrishiEye.Services.Catalog.Application.Categories.Commands.UpdateCategory;
-using KrishiEye.Services.Catalog.Application.Categories.Commands.DeleteCategory;
-using KrishiEye.Services.Catalog.Application.Categories.Queries.GetAllCategories;
-using KrishiEye.Services.Catalog.Application.Categories.Queries.GetCategoryById;
-using KrishiEye.Services.Catalog.Application.Categories.Common;
-using MediatR;
+using KrishiEye.Services.Catalog.Domain.Entities;
+using KrishiEye.Services.Catalog.Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
-namespace KrishiEye.Services.Catalog.API.Controllers;
-
-[ApiController]
-[Route("api/[controller]")]
-public class CategoriesController : ControllerBase
+namespace KrishiEye.Services.Catalog.API.Controllers
 {
-    private readonly IMediator _mediator;
-
-    public CategoriesController(IMediator mediator)
+    [ApiController]
+    [Route("api/[controller]")]
+    public class CategoriesController : ControllerBase
     {
-        _mediator = mediator;
-    }
+        private readonly CatalogDbContext _context;
 
-    [HttpGet]
-    public async Task<ActionResult<List<CategoryDto>>> GetAll([FromQuery] Guid? productTypeId = null)
-    {
-        var result = await _mediator.Send(new GetAllCategoriesQuery(productTypeId));
-        return Ok(result);
-    }
+        public CategoriesController(CatalogDbContext context)
+        {
+            _context = context;
+        }
 
-    [HttpPost]
-    public async Task<ActionResult<Guid>> Create([FromBody] CreateCategoryCommand command)
-    {
-        var id = await _mediator.Send(command);
-        return CreatedAtAction(nameof(GetById), new { id }, id);
-    }
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
+        {
+            return await _context.Categories.Include(c => c.SubCategories).Where(c => c.ParentId == null).ToListAsync();
+        }
 
-    [HttpGet("{id}")]
-    public async Task<ActionResult<CategoryDto>> GetById(Guid id)
-    {
-        var result = await _mediator.Send(new GetCategoryByIdQuery(id));
-        if (result == null)
-            return NotFound();
+        [HttpPost]
+        public async Task<ActionResult<Category>> CreateCategory(Category category)
+        {
+            category.Status = CategoryStatus.Pending; // Default to Pending
+            _context.Categories.Add(category);
+            await _context.SaveChangesAsync();
 
-        return Ok(result);
-    }
-
-    [HttpPut("{id}")]
-    public async Task<IActionResult> Update(Guid id, [FromBody] UpdateCategoryRequest request)
-    {
-        var command = new UpdateCategoryCommand(
-            id,
-            request.Name,
-            request.Description,
-            request.UrlSlug,
-            request.MetaTitle,
-            request.MetaDescription);
-
-        await _mediator.Send(command);
-        return NoContent();
-    }
-
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete(Guid id)
-    {
-        await _mediator.Send(new DeleteCategoryCommand(id));
-        return NoContent();
+            return CreatedAtAction(nameof(GetCategories), new { id = category.Id }, category);
+        }
     }
 }
-
-public record UpdateCategoryRequest(
-    string Name,
-    string Description,
-    string UrlSlug,
-    string MetaTitle,
-    string MetaDescription);
