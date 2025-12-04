@@ -7,12 +7,14 @@ import { Button } from "@/components/ui/button";
 import { MegaMenu, MegaMenuSection } from "./MegaMenu";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
+import { useCart } from "@/contexts/CartContext";
 
 export function Navbar() {
     const [openDropdown, setOpenDropdown] = useState<string | null>(null);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
     const [mobileExpandedSection, setMobileExpandedSection] = useState<string | null>(null);
+    const { itemCount } = useCart();
 
     const router = useRouter();
 
@@ -130,6 +132,12 @@ export function Navbar() {
                                         ]}
                                     />
                                 </div>
+                                <div className="mt-4 pt-4 border-t border-gray-100">
+                                    <Link href="/products" className="flex items-center gap-2 text-primary font-semibold hover:underline group">
+                                        View All Products
+                                        <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                                    </Link>
+                                </div>
                             </MegaMenu>
 
                             <MegaMenu
@@ -149,6 +157,12 @@ export function Navbar() {
                                             { label: "Open Trucks", href: "/transporters/open-trucks" },
                                         ]}
                                     />
+                                </div>
+                                <div className="mt-4 pt-4 border-t border-gray-100">
+                                    <Link href="/transporters" className="flex items-center gap-2 text-primary font-semibold hover:underline group">
+                                        View All Transporters
+                                        <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                                    </Link>
                                 </div>
                             </MegaMenu>
 
@@ -176,13 +190,25 @@ export function Navbar() {
                                         ]}
                                     />
                                 </div>
+                                <div className="mt-4 pt-4 border-t border-gray-100">
+                                    <Link href="/consultants" className="flex items-center gap-2 text-primary font-semibold hover:underline group">
+                                        View All Consultants
+                                        <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                                    </Link>
+                                </div>
                             </MegaMenu>
                         </div>
 
-                        <Button variant="ghost" size="icon" className="text-gray-600 hover:text-primary relative group">
-                            <ShoppingCart className="h-6 w-6" />
-                            <span className="absolute top-1 right-1 h-2.5 w-2.5 rounded-full bg-primary ring-2 ring-white group-hover:scale-110 transition-transform"></span>
-                        </Button>
+                        <Link href="/cart">
+                            <Button variant="ghost" size="icon" className="text-gray-600 hover:text-primary relative group">
+                                <ShoppingCart className="h-6 w-6" />
+                                {itemCount > 0 && (
+                                    <span className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-primary text-primary-foreground text-xs flex items-center justify-center font-bold ring-2 ring-white group-hover:scale-110 transition-transform">
+                                        {itemCount}
+                                    </span>
+                                )}
+                            </Button>
+                        </Link>
 
                         <Button variant="outline" className="hidden lg:flex gap-2 rounded-full border-primary/20 hover:bg-primary/5 hover:text-primary font-semibold">
                             <User className="h-4 w-4" /> Sign In
@@ -249,6 +275,7 @@ export function Navbar() {
                                 </button>
                                 {mobileExpandedSection === 'products' && (
                                     <div className="pl-4 space-y-1 pb-2">
+                                        <Link href="/products" className="block p-2 text-sm font-semibold text-primary hover:underline">View All Products</Link>
                                         <Link href="/products/seeds" className="block p-2 text-sm text-gray-600 hover:text-primary">Seeds</Link>
                                         <Link href="/products/fertilizers" className="block p-2 text-sm text-gray-600 hover:text-primary">Fertilizers</Link>
                                         <Link href="/products/equipment" className="block p-2 text-sm text-gray-600 hover:text-primary">Equipment</Link>
@@ -264,6 +291,7 @@ export function Navbar() {
                                 </button>
                                 {mobileExpandedSection === 'transporters' && (
                                     <div className="pl-4 space-y-1 pb-2">
+                                        <Link href="/transporters" className="block p-2 text-sm font-semibold text-primary hover:underline">View All Transporters</Link>
                                         <Link href="/transporters/trucks" className="block p-2 text-sm text-gray-600 hover:text-primary">Trucks</Link>
                                         <Link href="/transporters/pickup-vans" className="block p-2 text-sm text-gray-600 hover:text-primary">Pickup Vans</Link>
                                     </div>
@@ -278,6 +306,7 @@ export function Navbar() {
                                 </button>
                                 {mobileExpandedSection === 'consultants' && (
                                     <div className="pl-4 space-y-1 pb-2">
+                                        <Link href="/consultants" className="block p-2 text-sm font-semibold text-primary hover:underline">View All Consultants</Link>
                                         <Link href="/consultants/veterinary" className="block p-2 text-sm text-gray-600 hover:text-primary">Veterinary</Link>
                                         <Link href="/consultants/crop" className="block p-2 text-sm text-gray-600 hover:text-primary">Crop Experts</Link>
                                     </div>

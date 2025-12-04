@@ -1,13 +1,49 @@
 "use client";
 
+import { useEffect } from "react";
 import { ArrowRight, Sprout, Tractor, FlaskConical, Truck, ShieldCheck, Stethoscope } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ItemCard } from "@/components/home/ItemCard";
 import { TransporterCard } from "@/components/home/TransporterCard";
 import { ServiceCard } from "@/components/home/ServiceCard";
 import Link from "next/link";
+import { useCart } from "@/contexts/CartContext";
 
 export default function Home() {
+  const { addItem, items } = useCart();
+
+  // Add sample items to cart on first load for testing
+  useEffect(() => {
+    if (items.length === 0) {
+      addItem({
+        id: 1,
+        title: "Premium Rice Seeds (BRRI-28)",
+        price: 765,
+        regularPrice: 850,
+        unit: "kg",
+        sellerName: "Green Valley Seeds",
+        isVerified: true,
+        imageUrl: "https://images.unsplash.com/photo-1586201375761-83865001e31c?q=80&w=600&auto=format&fit=crop",
+        productType: "Seeds",
+        transportIncluded: true,
+        stockAvailable: 100,
+      });
+
+      addItem({
+        id: 2,
+        title: "Organic Fertilizer Mix",
+        price: 405,
+        regularPrice: 450,
+        unit: "bag",
+        sellerName: "Nature's Best",
+        isVerified: true,
+        imageUrl: "https://images.unsplash.com/photo-1628352081506-83c43123ed6d?q=80&w=600&auto=format&fit=crop",
+        productType: "Fertilizer",
+        transportIncluded: false,
+        stockAvailable: 50,
+      });
+    }
+  }, [addItem, items.length]);
   return (
     <div className="flex flex-col min-h-screen bg-white">
       {/* Hero Section - Clean & Impactful */}
@@ -81,9 +117,11 @@ export default function Home() {
               <h2 className="text-3xl font-bold tracking-tight mb-2 text-gray-900">Featured Products</h2>
               <p className="text-gray-500">Top quality picks for your farm.</p>
             </div>
-            <Button variant="ghost" className="hidden md:flex gap-2 text-primary hover:bg-primary/5 font-medium">
-              View All <ArrowRight className="h-4 w-4" />
-            </Button>
+            <Link href="/products">
+              <Button variant="ghost" className="hidden md:flex gap-2 text-primary hover:bg-primary/5 font-medium">
+                View All <ArrowRight className="h-4 w-4" />
+              </Button>
+            </Link>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 2xl:grid-cols-5 gap-6">
@@ -165,7 +203,9 @@ export default function Home() {
           </div>
 
           <div className="mt-10 text-center md:hidden">
-            <Button variant="outline" className="w-full rounded-full border-gray-200">View All Products</Button>
+            <Link href="/products">
+              <Button variant="outline" className="w-full rounded-full border-gray-200">View All Products</Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -200,9 +240,11 @@ export default function Home() {
               <h2 className="text-3xl font-bold tracking-tight mb-2 text-gray-900">Verified Transporters</h2>
               <p className="text-gray-500">Reliable logistics partners.</p>
             </div>
-            <Button variant="ghost" className="hidden md:flex gap-2 text-primary hover:bg-primary/5 font-medium">
-              Find Transporters <ArrowRight className="h-4 w-4" />
-            </Button>
+            <Link href="/transporters">
+              <Button variant="ghost" className="hidden md:flex gap-2 text-primary hover:bg-primary/5 font-medium">
+                Find Transporters <ArrowRight className="h-4 w-4" />
+              </Button>
+            </Link>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 2xl:grid-cols-5 gap-6">
