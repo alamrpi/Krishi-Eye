@@ -1,8 +1,8 @@
 import { Heart, CheckCircle2, ShoppingCart, Truck } from "lucide-react";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import Link from "next/link";
+import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Rating } from "@/components/ui/rating";
 import Image from "next/image";
 
 interface ItemCardProps {
@@ -120,68 +120,82 @@ export function ItemCard({
     }
 
     return (
-        <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300 group flex flex-col h-full border-0 shadow-sm">
-            <div className="relative aspect-[4/3] overflow-hidden">
-                <Image
-                    src={imageUrl}
-                    alt={title}
-                    fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <Link href={`/products/${id}`} className="block h-full">
+            <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300 group flex flex-col h-full border-0 shadow-sm relative">
+                <div className="relative aspect-[4/3] overflow-hidden">
+                    <Image
+                        src={imageUrl}
+                        alt={title}
+                        fill
+                        className="object-cover transition-transform duration-300 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                {discountPercentage > 0 && (
-                    <Badge className="absolute top-2 left-2 bg-red-500 hover:bg-red-600">
-                        -{discountPercentage}%
-                    </Badge>
-                )}
+                    {discountPercentage > 0 && (
+                        <Badge className="absolute top-2 left-2 bg-red-500 hover:bg-red-600">
+                            -{discountPercentage}%
+                        </Badge>
+                    )}
 
-                <Button
-                    size="icon"
-                    variant="ghost"
-                    className="absolute top-2 right-2 h-8 w-8 bg-white/80 hover:bg-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
-                >
-                    <Heart className="h-4 w-4 text-gray-600" />
-                </Button>
-            </div>
-
-            <div className="p-4 flex flex-col flex-grow">
-                <div className="flex justify-between items-start mb-2">
-                    <Badge variant="secondary" className="mb-2 text-xs">
-                        {productType}
-                    </Badge>
-                    <div className="flex items-center gap-1 text-xs font-medium">
-                        <span className="text-yellow-500">★</span>
-                        {rating} ({reviewCount})
-                    </div>
-                </div>
-
-                <h3 className="font-semibold text-lg mb-1 line-clamp-2 group-hover:text-primary transition-colors">
-                    {title}
-                </h3>
-
-                <div className="flex items-center gap-1 text-sm text-muted-foreground mb-3">
-                    <span className="line-clamp-1">{sellerName}</span>
-                    {isVerified && <CheckCircle2 className="h-3 w-3 text-blue-500" />}
-                </div>
-
-                <div className="mt-auto pt-3 border-t flex items-center justify-between">
-                    <div>
-                        <div className="font-bold text-lg text-primary">
-                            ৳{price}
-                            <span className="text-sm font-normal text-muted-foreground">/{unit}</span>
-                        </div>
-                        {discountPercentage > 0 && (
-                            <div className="text-xs text-muted-foreground line-through">
-                                ৳{regularPrice}
-                            </div>
-                        )}
-                    </div>
-                    <Button size="icon" variant="secondary" className="h-8 w-8 rounded-full hover:bg-primary hover:text-white transition-colors">
-                        <ShoppingCart className="h-4 w-4" />
+                    <Button
+                        size="icon"
+                        variant="ghost"
+                        className="absolute top-2 right-2 h-8 w-8 bg-white/80 hover:bg-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity z-10"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            // Add to wishlist logic
+                        }}
+                    >
+                        <Heart className="h-4 w-4 text-gray-600" />
                     </Button>
                 </div>
-            </div>
-        </Card>
+
+                <div className="p-4 flex flex-col flex-grow">
+                    <div className="flex justify-between items-start mb-2">
+                        <Badge variant="secondary" className="mb-2 text-xs">
+                            {productType}
+                        </Badge>
+                        <div className="flex items-center gap-1 text-xs font-medium">
+                            <span className="text-yellow-500">★</span>
+                            {rating} ({reviewCount})
+                        </div>
+                    </div>
+
+                    <h3 className="font-semibold text-lg mb-1 line-clamp-2 group-hover:text-primary transition-colors">
+                        {title}
+                    </h3>
+
+                    <div className="flex items-center gap-1 text-sm text-muted-foreground mb-3">
+                        <span className="line-clamp-1">{sellerName}</span>
+                        {isVerified && <CheckCircle2 className="h-3 w-3 text-blue-500" />}
+                    </div>
+
+                    <div className="mt-auto pt-3 border-t flex items-center justify-between">
+                        <div>
+                            <div className="font-bold text-lg text-primary">
+                                ৳{price}
+                                <span className="text-sm font-normal text-muted-foreground">/{unit}</span>
+                            </div>
+                            {discountPercentage > 0 && (
+                                <div className="text-xs text-muted-foreground line-through">
+                                    ৳{regularPrice}
+                                </div>
+                            )}
+                        </div>
+                        <Button
+                            size="icon"
+                            variant="secondary"
+                            className="h-8 w-8 rounded-full hover:bg-primary hover:text-white transition-colors z-10"
+                            onClick={(e) => {
+                                e.preventDefault();
+                                // Add to cart logic
+                            }}
+                        >
+                            <ShoppingCart className="h-4 w-4" />
+                        </Button>
+                    </div>
+                </div>
+            </Card>
+        </Link>
     );
 }

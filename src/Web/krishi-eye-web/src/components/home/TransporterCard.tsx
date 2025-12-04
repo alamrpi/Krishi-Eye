@@ -28,7 +28,7 @@ export function TransporterCard({
 }: TransporterCardProps) {
     if (viewMode === "list") {
         return (
-            <Card className="overflow-hidden hover:shadow-md transition-all duration-300 group flex flex-col sm:flex-row w-full border-border/50 relative">
+            <Card className="overflow-hidden hover:shadow-md transition-all duration-300 group flex flex-col sm:flex-row w-full border-0 shadow-sm relative">
                 {/* Favorite Button - Always Visible */}
                 <Button
                     size="icon"
@@ -39,12 +39,12 @@ export function TransporterCard({
                 </Button>
 
                 {/* Icon/Image Section */}
-                <div className="relative w-full sm:w-48 h-32 sm:h-auto bg-gradient-to-br from-blue-50 to-indigo-50 flex items-center justify-center shrink-0 border-b sm:border-b-0 sm:border-r border-border/50">
+                <div className="relative w-full sm:w-48 h-32 sm:h-auto bg-gradient-to-br from-blue-50 to-indigo-50 flex items-center justify-center shrink-0">
                     <div className="p-4 bg-white rounded-full shadow-sm">
                         <Truck className="h-8 w-8 text-primary" />
                     </div>
                     {isVerified && (
-                        <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-blue-600 text-[10px] px-2 py-1 rounded-full flex items-center gap-1 font-medium shadow-sm border border-blue-100">
+                        <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-blue-600 text-[10px] px-2 py-1 rounded-full flex items-center gap-1 font-medium shadow-sm">
                             <CheckCircle2 className="h-3 w-3" />
                             Verified
                         </div>
@@ -59,7 +59,7 @@ export function TransporterCard({
                                 <h3 className="font-bold text-lg text-foreground group-hover:text-primary transition-colors">
                                     {name}
                                 </h3>
-                                <div className="flex items-center gap-1 bg-yellow-50 px-1.5 py-0.5 rounded text-xs font-medium text-yellow-700 border border-yellow-100">
+                                <div className="flex items-center gap-1 bg-yellow-50 px-1.5 py-0.5 rounded text-xs font-medium text-yellow-700 bg-yellow-50">
                                     <Star className="h-3 w-3 fill-yellow-500 text-yellow-500" />
                                     {rating}
                                 </div>
@@ -75,10 +75,10 @@ export function TransporterCard({
                         </div>
                     </div>
 
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-t border-border/50 pt-4 mt-auto">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-t border-gray-100 pt-4 mt-auto">
                         <div className="flex flex-wrap gap-2">
                             {vehicleTypes.map((type) => (
-                                <Badge key={type} variant="secondary" className="bg-secondary/50 hover:bg-secondary text-secondary-foreground font-normal">
+                                <Badge key={type} variant="secondary" className="bg-gray-100 hover:bg-gray-200 text-gray-700 font-normal">
                                     {type}
                                 </Badge>
                             ))}
@@ -102,7 +102,7 @@ export function TransporterCard({
 
     // Grid View
     return (
-        <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 group flex flex-col h-full border-border/50 relative">
+        <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 group flex flex-col h-full border-0 shadow-sm relative">
             {/* Favorite Button - Always Visible */}
             <Button
                 size="icon"
@@ -112,12 +112,12 @@ export function TransporterCard({
                 <Heart className="h-4 w-4 text-gray-600 hover:text-red-500 hover:fill-red-500 transition-colors" />
             </Button>
 
-            <div className="relative h-40 bg-gradient-to-br from-blue-50 to-indigo-50 flex items-center justify-center border-b border-border/50">
+            <div className="relative h-40 bg-gradient-to-br from-blue-50 to-indigo-50 flex items-center justify-center">
                 <div className="p-4 bg-white rounded-full shadow-sm group-hover:scale-110 transition-transform duration-300">
                     <Truck className="h-10 w-10 text-primary" />
                 </div>
                 {isVerified && (
-                    <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-blue-600 text-[10px] px-2 py-1 rounded-full flex items-center gap-1 font-medium shadow-sm border border-blue-100">
+                    <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-blue-600 text-[10px] px-2 py-1 rounded-full flex items-center gap-1 font-medium shadow-sm">
                         <CheckCircle2 className="h-3 w-3" />
                         Verified
                     </div>
@@ -129,7 +129,7 @@ export function TransporterCard({
                     <h3 className="font-bold text-lg text-foreground group-hover:text-primary transition-colors line-clamp-1">
                         {name}
                     </h3>
-                    <div className="flex items-center gap-1 bg-yellow-50 px-1.5 py-0.5 rounded text-xs font-medium text-yellow-700 border border-yellow-100 shrink-0">
+                    <div className="flex items-center gap-1 bg-yellow-50 px-1.5 py-0.5 rounded text-xs font-medium text-yellow-700 bg-yellow-50 shrink-0">
                         <Star className="h-3 w-3 fill-yellow-500 text-yellow-500" />
                         {rating}
                     </div>
@@ -142,18 +142,18 @@ export function TransporterCard({
 
                 <div className="flex flex-wrap gap-1.5 mb-4">
                     {vehicleTypes.slice(0, 3).map((type) => (
-                        <Badge key={type} variant="secondary" className="bg-secondary/50 font-normal text-xs">
+                        <Badge key={type} variant="secondary" className="bg-gray-100 font-normal text-xs">
                             {type}
                         </Badge>
                     ))}
                     {vehicleTypes.length > 3 && (
-                        <Badge variant="secondary" className="bg-secondary/50 font-normal text-xs">
+                        <Badge variant="secondary" className="bg-gray-100 font-normal text-xs">
                             +{vehicleTypes.length - 3}
                         </Badge>
                     )}
                 </div>
 
-                <div className="mt-auto pt-4 border-t border-border/50 flex items-center justify-between">
+                <div className="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
                     <div>
                         <p className="text-[10px] text-muted-foreground uppercase tracking-wider font-medium">Available</p>
                         <p className="font-bold text-primary">{vehicleCount} Vehicles</p>

@@ -30,7 +30,7 @@ export function ServiceCard({
 
     if (viewMode === "list") {
         return (
-            <Card className="overflow-hidden hover:shadow-md transition-all duration-300 group flex flex-col sm:flex-row w-full border-border/50 relative">
+            <Card className="overflow-hidden hover:shadow-md transition-all duration-300 group flex flex-col sm:flex-row w-full border-0 shadow-sm relative">
                 {/* Favorite Button - Always Visible */}
                 <Button
                     size="icon"
@@ -41,7 +41,7 @@ export function ServiceCard({
                 </Button>
 
                 {/* Avatar Section */}
-                <div className="relative w-full sm:w-48 h-32 sm:h-auto bg-gradient-to-br from-green-50 to-emerald-50 flex items-center justify-center shrink-0 border-b sm:border-b-0 sm:border-r border-border/50">
+                <div className="relative w-full sm:w-48 h-32 sm:h-auto bg-gradient-to-br from-green-50 to-emerald-50 flex items-center justify-center shrink-0">
                     <div className="h-20 w-20 rounded-full bg-white shadow-sm flex items-center justify-center border-2 border-white">
                         {isIndividual ? (
                             <User className="h-10 w-10 text-green-600" />
@@ -50,7 +50,7 @@ export function ServiceCard({
                         )}
                     </div>
                     {isVerified && (
-                        <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-green-700 text-[10px] px-2 py-1 rounded-full flex items-center gap-1 font-medium shadow-sm border border-green-100">
+                        <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-green-700 text-[10px] px-2 py-1 rounded-full flex items-center gap-1 font-medium shadow-sm">
                             <CheckCircle2 className="h-3 w-3" />
                             Verified
                         </div>
@@ -75,7 +75,7 @@ export function ServiceCard({
                                     <span className="font-medium text-foreground">{rating}</span>
                                     <span>({reviewCount} reviews)</span>
                                 </div>
-                                <span className="text-border">|</span>
+                                <span className="text-gray-300">|</span>
                                 <div className="flex items-center gap-1">
                                     <Clock className="h-3.5 w-3.5" />
                                     {experience} Exp.
@@ -89,7 +89,7 @@ export function ServiceCard({
                         </div>
                     </div>
 
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-t border-border/50 pt-4 mt-auto">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-t border-gray-100 pt-4 mt-auto">
                         <div className="flex items-center gap-4 text-sm">
                             <div className="flex items-center gap-1.5 text-green-700 bg-green-50 px-2 py-1 rounded-md border border-green-100">
                                 <Calendar className="h-3.5 w-3.5" />
@@ -112,7 +112,7 @@ export function ServiceCard({
 
     // Grid View
     return (
-        <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 group flex flex-col h-full border-border/50 relative">
+        <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 group flex flex-col h-full border-0 shadow-sm relative">
             {/* Favorite Button - Always Visible */}
             <Button
                 size="icon"
@@ -122,7 +122,7 @@ export function ServiceCard({
                 <Heart className="h-4 w-4 text-gray-600 hover:text-red-500 hover:fill-red-500 transition-colors" />
             </Button>
 
-            <div className="relative h-40 bg-gradient-to-br from-green-50 to-emerald-50 flex items-center justify-center border-b border-border/50">
+            <div className="relative h-40 bg-gradient-to-br from-green-50 to-emerald-50 flex items-center justify-center">
                 <div className="h-20 w-20 rounded-full bg-white shadow-sm flex items-center justify-center border-2 border-white group-hover:scale-105 transition-transform duration-300">
                     {isIndividual ? (
                         <User className="h-10 w-10 text-green-600" />
@@ -131,7 +131,7 @@ export function ServiceCard({
                     )}
                 </div>
                 {isVerified && (
-                    <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-green-700 text-[10px] px-2 py-1 rounded-full flex items-center gap-1 font-medium shadow-sm border border-green-100">
+                    <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-green-700 text-[10px] px-2 py-1 rounded-full flex items-center gap-1 font-medium shadow-sm">
                         <CheckCircle2 className="h-3 w-3" />
                         Verified
                     </div>
@@ -143,7 +143,7 @@ export function ServiceCard({
                     <Badge variant="outline" className="text-xs font-normal border-primary/20 text-primary bg-primary/5">
                         {serviceType}
                     </Badge>
-                    <div className="flex items-center gap-1 bg-yellow-50 px-1.5 py-0.5 rounded text-xs font-medium text-yellow-700 border border-yellow-100 shrink-0">
+                    <div className="flex items-center gap-1 bg-yellow-50 px-1.5 py-0.5 rounded text-xs font-medium text-yellow-700 bg-yellow-50 shrink-0">
                         <Star className="h-3 w-3 fill-yellow-500 text-yellow-500" />
                         {rating}
                     </div>
@@ -155,14 +155,14 @@ export function ServiceCard({
 
                 <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
                     <span>{consultantType}</span>
-                    <span className="text-border">•</span>
+                    <span className="text-gray-300">•</span>
                     <div className="flex items-center gap-1">
                         <Clock className="h-3 w-3" />
                         {experience}
                     </div>
                 </div>
 
-                <div className="mt-auto pt-4 border-t border-border/50">
+                <div className="mt-auto pt-4 border-t border-gray-100">
                     <Button className="w-full gap-2 bg-green-600 hover:bg-green-700 text-white shadow-sm" size="sm">
                         Book Now
                         <ArrowRight className="h-3.5 w-3.5" />
