@@ -8,6 +8,7 @@ import { MegaMenu, MegaMenuSection } from "./MegaMenu";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { useCart } from "@/contexts/CartContext";
+import { ROUTES } from "@/lib/routes";
 
 export function Navbar() {
     const [openDropdown, setOpenDropdown] = useState<string | null>(null);
@@ -35,7 +36,7 @@ export function Navbar() {
         const formData = new FormData(e.currentTarget);
         const query = formData.get('q') as string;
         if (query.trim()) {
-            router.push(`/search?q=${encodeURIComponent(query)}&type=products`);
+            router.push(`${ROUTES.search}?q=${encodeURIComponent(query)}&type=products`);
             setIsMobileSearchOpen(false);
         }
     };
@@ -50,8 +51,8 @@ export function Navbar() {
                         <span className="hidden sm:inline">support@krishieye.com</span>
                     </div>
                     <div className="flex items-center gap-4">
-                        <Link href="/track-order" className="hover:underline">Track Order</Link>
-                        <Link href="/offers" className="hover:underline">Offers</Link>
+                        <Link href={ROUTES.trackOrder} className="hover:underline">Track Order</Link>
+                        <Link href={ROUTES.offers} className="hover:underline">Offers</Link>
                     </div>
                 </div>
             </div>
@@ -60,7 +61,7 @@ export function Navbar() {
             <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md shadow-sm">
                 <div className="container mx-auto px-4 md:px-8 flex h-20 items-center justify-between gap-4">
                     {/* Logo Area */}
-                    <Link href="/" className="flex items-center gap-2 group shrink-0">
+                    <Link href={ROUTES.home} className="flex items-center gap-2 group shrink-0">
                         <div className="h-10 w-10 rounded-xl bg-primary flex items-center justify-center shadow-sm transition-transform group-hover:scale-105">
                             <span className="text-primary-foreground font-bold text-2xl">K</span>
                         </div>
@@ -109,31 +110,31 @@ export function Navbar() {
                                     <MegaMenuSection
                                         title="Seeds"
                                         items={[
-                                            { label: "Rice Seeds", href: "/products/seeds/rice" },
-                                            { label: "Wheat Seeds", href: "/products/seeds/wheat" },
-                                            { label: "Corn Seeds", href: "/products/seeds/corn" },
-                                            { label: "Vegetable Seeds", href: "/products/seeds/vegetables" },
+                                            { label: "Rice Seeds", href: ROUTES.products.subcategory("seeds", "rice") },
+                                            { label: "Wheat Seeds", href: ROUTES.products.subcategory("seeds", "wheat") },
+                                            { label: "Corn Seeds", href: ROUTES.products.subcategory("seeds", "corn") },
+                                            { label: "Vegetable Seeds", href: ROUTES.products.subcategory("seeds", "vegetables") },
                                         ]}
                                     />
                                     <MegaMenuSection
                                         title="Fertilizers"
                                         items={[
-                                            { label: "Organic", href: "/products/fertilizers/organic" },
-                                            { label: "Chemical", href: "/products/fertilizers/chemical" },
-                                            { label: "Compost", href: "/products/fertilizers/compost" },
+                                            { label: "Organic", href: ROUTES.products.subcategory("fertilizers", "organic") },
+                                            { label: "Chemical", href: ROUTES.products.subcategory("fertilizers", "chemical") },
+                                            { label: "Compost", href: ROUTES.products.subcategory("fertilizers", "compost") },
                                         ]}
                                     />
                                     <MegaMenuSection
                                         title="Equipment"
                                         items={[
-                                            { label: "Hand Tools", href: "/products/equipment/hand-tools" },
-                                            { label: "Irrigation", href: "/products/equipment/irrigation" },
-                                            { label: "Pesticides", href: "/products/equipment/pesticides" },
+                                            { label: "Hand Tools", href: ROUTES.products.subcategory("equipment", "hand-tools") },
+                                            { label: "Irrigation", href: ROUTES.products.subcategory("equipment", "irrigation") },
+                                            { label: "Pesticides", href: ROUTES.products.subcategory("equipment", "pesticides") },
                                         ]}
                                     />
                                 </div>
                                 <div className="mt-4 pt-4 border-t border-gray-100">
-                                    <Link href="/products" className="flex items-center gap-2 text-primary font-semibold hover:underline group">
+                                    <Link href={ROUTES.products.root} className="flex items-center gap-2 text-primary font-semibold hover:underline group">
                                         View All Products
                                         <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                                     </Link>
@@ -150,16 +151,16 @@ export function Navbar() {
                                     <MegaMenuSection
                                         title="Vehicle Type"
                                         items={[
-                                            { label: "Trucks (5+ Ton)", href: "/transporters/trucks" },
-                                            { label: "Pickup Vans", href: "/transporters/pickup-vans" },
-                                            { label: "Covered Vans", href: "/transporters/covered-vans" },
-                                            { label: "Refrigerated", href: "/transporters/refrigerated" },
-                                            { label: "Open Trucks", href: "/transporters/open-trucks" },
+                                            { label: "Trucks (5+ Ton)", href: ROUTES.transporters.type("trucks") },
+                                            { label: "Pickup Vans", href: ROUTES.transporters.type("pickup-vans") },
+                                            { label: "Covered Vans", href: ROUTES.transporters.type("covered-vans") },
+                                            { label: "Refrigerated", href: ROUTES.transporters.type("refrigerated") },
+                                            { label: "Open Trucks", href: ROUTES.transporters.type("open-trucks") },
                                         ]}
                                     />
                                 </div>
                                 <div className="mt-4 pt-4 border-t border-gray-100">
-                                    <Link href="/transporters" className="flex items-center gap-2 text-primary font-semibold hover:underline group">
+                                    <Link href={ROUTES.transporters.root} className="flex items-center gap-2 text-primary font-semibold hover:underline group">
                                         View All Transporters
                                         <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                                     </Link>
@@ -176,22 +177,22 @@ export function Navbar() {
                                     <MegaMenuSection
                                         title="Veterinary"
                                         items={[
-                                            { label: "Cattle Specialists", href: "/consultants/veterinary/cattle" },
-                                            { label: "Poultry Doctors", href: "/consultants/veterinary/poultry" },
-                                            { label: "General Vets", href: "/consultants/veterinary/general" },
+                                            { label: "Cattle Specialists", href: ROUTES.consultants.subcategory("veterinary", "cattle") },
+                                            { label: "Poultry Doctors", href: ROUTES.consultants.subcategory("veterinary", "poultry") },
+                                            { label: "General Vets", href: ROUTES.consultants.subcategory("veterinary", "general") },
                                         ]}
                                     />
                                     <MegaMenuSection
                                         title="Crop Experts"
                                         items={[
-                                            { label: "Soil Testing", href: "/consultants/crop/soil-testing" },
-                                            { label: "Pest Control", href: "/consultants/crop/pest-control" },
-                                            { label: "Crop Advisors", href: "/consultants/crop/advisors" },
+                                            { label: "Soil Testing", href: ROUTES.consultants.subcategory("crop", "soil-testing") },
+                                            { label: "Pest Control", href: ROUTES.consultants.subcategory("crop", "pest-control") },
+                                            { label: "Crop Advisors", href: ROUTES.consultants.subcategory("crop", "advisors") },
                                         ]}
                                     />
                                 </div>
                                 <div className="mt-4 pt-4 border-t border-gray-100">
-                                    <Link href="/consultants" className="flex items-center gap-2 text-primary font-semibold hover:underline group">
+                                    <Link href={ROUTES.consultants.root} className="flex items-center gap-2 text-primary font-semibold hover:underline group">
                                         View All Consultants
                                         <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                                     </Link>
@@ -199,7 +200,7 @@ export function Navbar() {
                             </MegaMenu>
                         </div>
 
-                        <Link href="/cart">
+                        <Link href={ROUTES.cart}>
                             <Button variant="ghost" size="icon" className="text-gray-600 hover:text-primary relative group">
                                 <ShoppingCart className="h-6 w-6" />
                                 {itemCount > 0 && (
@@ -275,10 +276,10 @@ export function Navbar() {
                                 </button>
                                 {mobileExpandedSection === 'products' && (
                                     <div className="pl-4 space-y-1 pb-2">
-                                        <Link href="/products" className="block p-2 text-sm font-semibold text-primary hover:underline">View All Products</Link>
-                                        <Link href="/products/seeds" className="block p-2 text-sm text-gray-600 hover:text-primary">Seeds</Link>
-                                        <Link href="/products/fertilizers" className="block p-2 text-sm text-gray-600 hover:text-primary">Fertilizers</Link>
-                                        <Link href="/products/equipment" className="block p-2 text-sm text-gray-600 hover:text-primary">Equipment</Link>
+                                        <Link href={ROUTES.products.root} className="block p-2 text-sm font-semibold text-primary hover:underline">View All Products</Link>
+                                        <Link href={ROUTES.products.category("seeds")} className="block p-2 text-sm text-gray-600 hover:text-primary">Seeds</Link>
+                                        <Link href={ROUTES.products.category("fertilizers")} className="block p-2 text-sm text-gray-600 hover:text-primary">Fertilizers</Link>
+                                        <Link href={ROUTES.products.category("equipment")} className="block p-2 text-sm text-gray-600 hover:text-primary">Equipment</Link>
                                     </div>
                                 )}
 
@@ -291,9 +292,9 @@ export function Navbar() {
                                 </button>
                                 {mobileExpandedSection === 'transporters' && (
                                     <div className="pl-4 space-y-1 pb-2">
-                                        <Link href="/transporters" className="block p-2 text-sm font-semibold text-primary hover:underline">View All Transporters</Link>
-                                        <Link href="/transporters/trucks" className="block p-2 text-sm text-gray-600 hover:text-primary">Trucks</Link>
-                                        <Link href="/transporters/pickup-vans" className="block p-2 text-sm text-gray-600 hover:text-primary">Pickup Vans</Link>
+                                        <Link href={ROUTES.transporters.root} className="block p-2 text-sm font-semibold text-primary hover:underline">View All Transporters</Link>
+                                        <Link href={ROUTES.transporters.type("trucks")} className="block p-2 text-sm text-gray-600 hover:text-primary">Trucks</Link>
+                                        <Link href={ROUTES.transporters.type("pickup-vans")} className="block p-2 text-sm text-gray-600 hover:text-primary">Pickup Vans</Link>
                                     </div>
                                 )}
 
@@ -306,18 +307,18 @@ export function Navbar() {
                                 </button>
                                 {mobileExpandedSection === 'consultants' && (
                                     <div className="pl-4 space-y-1 pb-2">
-                                        <Link href="/consultants" className="block p-2 text-sm font-semibold text-primary hover:underline">View All Consultants</Link>
-                                        <Link href="/consultants/veterinary" className="block p-2 text-sm text-gray-600 hover:text-primary">Veterinary</Link>
-                                        <Link href="/consultants/crop" className="block p-2 text-sm text-gray-600 hover:text-primary">Crop Experts</Link>
+                                        <Link href={ROUTES.consultants.root} className="block p-2 text-sm font-semibold text-primary hover:underline">View All Consultants</Link>
+                                        <Link href={ROUTES.consultants.category("veterinary")} className="block p-2 text-sm text-gray-600 hover:text-primary">Veterinary</Link>
+                                        <Link href={ROUTES.consultants.category("crop")} className="block p-2 text-sm text-gray-600 hover:text-primary">Crop Experts</Link>
                                     </div>
                                 )}
                             </div>
 
                             <div className="border-t border-gray-100 my-4 pt-4">
-                                <Link href="/track-order" className="flex items-center justify-between w-full p-3 rounded-lg hover:bg-gray-50 text-left font-medium">
+                                <Link href={ROUTES.trackOrder} className="flex items-center justify-between w-full p-3 rounded-lg hover:bg-gray-50 text-left font-medium">
                                     Track Order
                                 </Link>
-                                <Link href="/offers" className="flex items-center justify-between w-full p-3 rounded-lg hover:bg-gray-50 text-left font-medium">
+                                <Link href={ROUTES.offers} className="flex items-center justify-between w-full p-3 rounded-lg hover:bg-gray-50 text-left font-medium">
                                     Offers
                                 </Link>
                             </div>

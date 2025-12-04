@@ -4,6 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { ROUTES } from "@/lib/routes";
 
 interface ItemCardProps {
     id: number;
@@ -120,7 +121,7 @@ export function ItemCard({
     }
 
     return (
-        <Link href={`/${id}`} className="block h-full">
+        <Link href={ROUTES.product(id)} className="block h-full">
             <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300 group flex flex-col h-full border-0 shadow-sm relative">
                 <div className="relative aspect-[4/3] overflow-hidden">
                     <Image

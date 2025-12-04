@@ -56,7 +56,6 @@ export function MegaMenu({ trigger, children, className, isOpen, onOpenChange }:
                         "animate-in fade-in-0 zoom-in-95 slide-in-from-top-2 duration-200",
                         className
                     )}
-                    onMouseLeave={() => onOpenChange(false)}
                 >
                     {/* Dropdown Arrow */}
                     <div className="absolute -top-2 left-1/2 -translate-x-1/2">
@@ -87,7 +86,7 @@ export function MegaMenuSection({ title, items }: MegaMenuSectionProps) {
             <div className="space-y-1">
                 {items.map((item) => (
                     <Link
-                        key={item.href}
+                        key={`${item.label}-${item.href}`}
                         href={item.href}
                         className="flex items-center justify-between px-4 py-2.5 rounded-lg hover:bg-primary/5 transition-all duration-200 group"
                     >

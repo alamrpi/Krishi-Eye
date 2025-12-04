@@ -84,12 +84,12 @@ export default function Home() {
         <h2 className="text-2xl font-bold mb-8 text-center md:text-left text-gray-900">Browse by Category</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
           {[
-            { name: "Seeds", iconType: "Sprout", color: "text-emerald-600", bg: "bg-emerald-50" },
-            { name: "Fertilizers", iconType: "FlaskConical", color: "text-blue-600", bg: "bg-blue-50" },
-            { name: "Machinery", iconType: "Tractor", color: "text-orange-600", bg: "bg-orange-50" },
-            { name: "Transport", iconType: "Truck", color: "text-indigo-600", bg: "bg-indigo-50" },
-            { name: "Services", iconType: "ShieldCheck", color: "text-purple-600", bg: "bg-purple-50" },
-            { name: "Others", iconType: "ArrowRight", color: "text-gray-600", bg: "bg-gray-50" },
+            { name: "Seeds", iconType: "Sprout", color: "text-emerald-600", bg: "bg-emerald-50", href: "/products/seeds" },
+            { name: "Fertilizers", iconType: "FlaskConical", color: "text-blue-600", bg: "bg-blue-50", href: "/products/fertilizers" },
+            { name: "Machinery", iconType: "Tractor", color: "text-orange-600", bg: "bg-orange-50", href: "/products/equipment" },
+            { name: "Transport", iconType: "Truck", color: "text-indigo-600", bg: "bg-indigo-50", href: "/transporters" },
+            { name: "Services", iconType: "ShieldCheck", color: "text-purple-600", bg: "bg-purple-50", href: "/consultants" },
+            { name: "Others", iconType: "ArrowRight", color: "text-gray-600", bg: "bg-gray-50", href: "/products" },
           ].map((cat) => {
             const IconComponent = cat.iconType === "Sprout" ? Sprout :
               cat.iconType === "FlaskConical" ? FlaskConical :
@@ -98,7 +98,7 @@ export default function Home() {
                     cat.iconType === "ShieldCheck" ? ShieldCheck :
                       ArrowRight;
             return (
-              <Link href="#" key={cat.name} className="group flex flex-col items-center justify-center p-6 rounded-2xl bg-gray-50 hover:bg-white hover:shadow-lg transition-all duration-300">
+              <Link href={cat.href} key={cat.name} className="group flex flex-col items-center justify-center p-6 rounded-2xl bg-gray-50 hover:bg-white hover:shadow-lg transition-all duration-300">
                 <div className={`h-14 w-14 rounded-full ${cat.bg} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
                   <IconComponent className={`h-7 w-7 ${cat.color}`} />
                 </div>

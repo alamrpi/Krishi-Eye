@@ -1,21 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import { useState, use } from "react";
 import { Grid3x3, List, Home, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { PriceRangeFilter } from "@/components/search/PriceRangeFilter";
 import { InfiniteScrollProducts } from "@/components/search/InfiniteScrollProducts";
+import { ROUTES } from "@/lib/routes";
 
 interface ProductCategoryPageProps {
-    params: {
+    params: Promise<{
         category: string;
-    };
+    }>;
 }
 
 export default function ProductCategoryPage({ params }: ProductCategoryPageProps) {
     const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
-    const { category } = params;
+    const { category } = use(params);
 
     // Format category name
     const categoryName = category.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
@@ -48,12 +49,12 @@ export default function ProductCategoryPage({ params }: ProductCategoryPageProps
             <div className="bg-white border-b">
                 <div className="container mx-auto px-4 md:px-8 py-4">
                     <div className="flex items-center gap-2 text-sm">
-                        <Link href="/" className="text-gray-500 hover:text-primary flex items-center gap-1">
+                        <Link href={ROUTES.home} className="text-gray-500 hover:text-primary flex items-center gap-1">
                             <Home className="h-4 w-4" />
                             Home
                         </Link>
                         <ChevronRight className="h-4 w-4 text-gray-400" />
-                        <Link href="/products" className="text-gray-500 hover:text-primary">
+                        <Link href={ROUTES.products.root} className="text-gray-500 hover:text-primary">
                             All Products
                         </Link>
                         <ChevronRight className="h-4 w-4 text-gray-400" />
