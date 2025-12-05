@@ -3,12 +3,28 @@
   "WorkspaceRootPath": "D:\\Resources\\Projects\\KrishiEye\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6FDA6591-AB66-4420-A6AE-83FC5869CC49}|src\\Services\\Identity\\KrishiEye.Services.Identity.API\\KrishiEye.Services.Identity.API.csproj|d:\\resources\\projects\\krishieye\\src\\services\\identity\\krishieye.services.identity.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{6FDA6591-AB66-4420-A6AE-83FC5869CC49}|src\\Services\\Identity\\KrishiEye.Services.Identity.API\\KrishiEye.Services.Identity.API.csproj|solutionrelative:src\\services\\identity\\krishieye.services.identity.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{CB444692-0300-4462-9EA5-AF77ECF70203}|src\\Services\\Order\\KrishiEye.Services.Order.API\\KrishiEye.Services.Order.API.csproj|d:\\resources\\projects\\krishieye\\src\\services\\order\\krishieye.services.order.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CB444692-0300-4462-9EA5-AF77ECF70203}|src\\Services\\Order\\KrishiEye.Services.Order.API\\KrishiEye.Services.Order.API.csproj|solutionrelative:src\\services\\order\\krishieye.services.order.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FDA6591-AB66-4420-A6AE-83FC5869CC49}|src\\Services\\Identity\\KrishiEye.Services.Identity.API\\KrishiEye.Services.Identity.API.csproj|d:\\resources\\projects\\krishieye\\src\\services\\identity\\krishieye.services.identity.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FDA6591-AB66-4420-A6AE-83FC5869CC49}|src\\Services\\Identity\\KrishiEye.Services.Identity.API\\KrishiEye.Services.Identity.API.csproj|solutionrelative:src\\services\\identity\\krishieye.services.identity.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ACAC80A1-3E3D-48E7-9FD5-BE9B1C8551B0}|src\\Services\\Catalog\\KrishiEye.Services.Catalog.API\\KrishiEye.Services.Catalog.API.csproj|d:\\resources\\projects\\krishieye\\src\\services\\catalog\\krishieye.services.catalog.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ACAC80A1-3E3D-48E7-9FD5-BE9B1C8551B0}|src\\Services\\Catalog\\KrishiEye.Services.Catalog.API\\KrishiEye.Services.Catalog.API.csproj|solutionrelative:src\\services\\catalog\\krishieye.services.catalog.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ACAC80A1-3E3D-48E7-9FD5-BE9B1C8551B0}|src\\Services\\Catalog\\KrishiEye.Services.Catalog.API\\KrishiEye.Services.Catalog.API.csproj|d:\\resources\\projects\\krishieye\\src\\services\\catalog\\krishieye.services.catalog.api\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ACAC80A1-3E3D-48E7-9FD5-BE9B1C8551B0}|src\\Services\\Catalog\\KrishiEye.Services.Catalog.API\\KrishiEye.Services.Catalog.API.csproj|solutionrelative:src\\services\\catalog\\krishieye.services.catalog.api\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{135B9AF6-787A-4288-B2B0-6955AC87802F}|src\\Gateways\\KrishiEye.ApiGateway\\KrishiEye.ApiGateway.csproj|d:\\resources\\projects\\krishieye\\src\\gateways\\krishieye.apigateway\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{135B9AF6-787A-4288-B2B0-6955AC87802F}|src\\Gateways\\KrishiEye.ApiGateway\\KrishiEye.ApiGateway.csproj|solutionrelative:src\\gateways\\krishieye.apigateway\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{135B9AF6-787A-4288-B2B0-6955AC87802F}|src\\Gateways\\KrishiEye.ApiGateway\\KrishiEye.ApiGateway.csproj|d:\\resources\\projects\\krishieye\\src\\gateways\\krishieye.apigateway\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{135B9AF6-787A-4288-B2B0-6955AC87802F}|src\\Gateways\\KrishiEye.ApiGateway\\KrishiEye.ApiGateway.csproj|solutionrelative:src\\gateways\\krishieye.apigateway\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,25 +39,77 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "launchSettings.json",
-              "DocumentMoniker": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Identity\\KrishiEye.Services.Identity.API\\Properties\\launchSettings.json",
-              "RelativeDocumentMoniker": "src\\Services\\Identity\\KrishiEye.Services.Identity.API\\Properties\\launchSettings.json",
-              "ToolTip": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Identity\\KrishiEye.Services.Identity.API\\Properties\\launchSettings.json",
-              "RelativeToolTip": "src\\Services\\Identity\\KrishiEye.Services.Identity.API\\Properties\\launchSettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-12-04T14:52:57.157Z",
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Order\\KrishiEye.Services.Order.API\\Program.cs",
+              "RelativeDocumentMoniker": "src\\Services\\Order\\KrishiEye.Services.Order.API\\Program.cs",
+              "ToolTip": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Order\\KrishiEye.Services.Order.API\\Program.cs",
+              "RelativeToolTip": "src\\Services\\Order\\KrishiEye.Services.Order.API\\Program.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T02:16:34.691Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Catalog\\KrishiEye.Services.Catalog.API\\Program.cs",
+              "RelativeDocumentMoniker": "src\\Services\\Catalog\\KrishiEye.Services.Catalog.API\\Program.cs",
+              "ToolTip": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Catalog\\KrishiEye.Services.Catalog.API\\Program.cs",
+              "RelativeToolTip": "src\\Services\\Catalog\\KrishiEye.Services.Catalog.API\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T02:16:02.883Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Identity\\KrishiEye.Services.Identity.API\\Program.cs",
+              "RelativeDocumentMoniker": "src\\Services\\Identity\\KrishiEye.Services.Identity.API\\Program.cs",
+              "ToolTip": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Identity\\KrishiEye.Services.Identity.API\\Program.cs",
+              "RelativeToolTip": "src\\Services\\Identity\\KrishiEye.Services.Identity.API\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T02:15:41.731Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ProductsController.cs",
+              "DocumentMoniker": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Catalog\\KrishiEye.Services.Catalog.API\\Controllers\\ProductsController.cs",
+              "RelativeDocumentMoniker": "src\\Services\\Catalog\\KrishiEye.Services.Catalog.API\\Controllers\\ProductsController.cs",
+              "ToolTip": "D:\\Resources\\Projects\\KrishiEye\\src\\Services\\Catalog\\KrishiEye.Services.Catalog.API\\Controllers\\ProductsController.cs",
+              "RelativeToolTip": "src\\Services\\Catalog\\KrishiEye.Services.Catalog.API\\Controllers\\ProductsController.cs",
+              "ViewState": "AgIAAIQAAAAAAAAAAAAewJkAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T02:01:20.708Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "D:\\Resources\\Projects\\KrishiEye\\src\\Gateways\\KrishiEye.ApiGateway\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "src\\Gateways\\KrishiEye.ApiGateway\\Properties\\launchSettings.json",
+              "ToolTip": "D:\\Resources\\Projects\\KrishiEye\\src\\Gateways\\KrishiEye.ApiGateway\\Properties\\launchSettings.json",
+              "RelativeToolTip": "src\\Gateways\\KrishiEye.ApiGateway\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-12-05T01:59:28.036Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\Resources\\Projects\\KrishiEye\\src\\Gateways\\KrishiEye.ApiGateway\\appsettings.json",
               "RelativeDocumentMoniker": "src\\Gateways\\KrishiEye.ApiGateway\\appsettings.json",
               "ToolTip": "D:\\Resources\\Projects\\KrishiEye\\src\\Gateways\\KrishiEye.ApiGateway\\appsettings.json",
               "RelativeToolTip": "src\\Gateways\\KrishiEye.ApiGateway\\appsettings.json",
-              "ViewState": "AgIAACcAAAAAAAAAAAAAAEgAAAAtAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-12-04T14:52:16.619Z",
               "EditorCaption": ""

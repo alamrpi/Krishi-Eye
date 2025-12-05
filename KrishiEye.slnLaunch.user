@@ -13,6 +13,14 @@
       {
         "Path": "src\\Services\\Transport\\KrishiEye.Services.Transport.API\\KrishiEye.Services.Transport.API.csproj",
         "Action": "Start"
+      },
+      {
+        "Path": "src\\Services\\Catalog\\KrishiEye.Services.Catalog.API\\KrishiEye.Services.Catalog.API.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "src\\Services\\Order\\KrishiEye.Services.Order.API\\KrishiEye.Services.Order.API.csproj",
+        "Action": "Start"
       }
     ]
   }

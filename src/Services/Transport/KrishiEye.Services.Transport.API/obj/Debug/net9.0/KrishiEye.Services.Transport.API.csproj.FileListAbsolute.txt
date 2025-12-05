@@ -183,3 +183,4 @@ d:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transp
 d:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.API\bin\Debug\net9.0\Grpc.Net.Common.dll
 d:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.API\bin\Debug\net9.0\System.ClientModel.dll
 d:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.API\bin\Debug\net9.0\System.Memory.Data.dll
+D:\Resources\Projects\KrishiEye\src\Services\Transport\KrishiEye.Services.Transport.API\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt

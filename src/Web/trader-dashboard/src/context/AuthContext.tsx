@@ -20,7 +20,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const [isLoading, setIsLoading] = useState(true)
     const router = useRouter()
 
-    const IDENTITY_URL = (process.env.NEXT_PUBLIC_IDENTITY_URL || "http://localhost:5001").replace(/\/$/, "")
+    // Force HTTP for localhost to avoid SSL errors in development
+    const rawUrl = process.env.NEXT_PUBLIC_IDENTITY_URL || "http://localhost:5001"
+    const IDENTITY_URL = rawUrl.replace("https://localhost", "http://localhost").replace(/\/$/, "")
 
     useEffect(() => {
         // Check for token in localStorage on mount

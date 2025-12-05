@@ -148,7 +148,7 @@ namespace KrishiEye.Services.Catalog.API.Controllers
             existingProduct.Description = product.Description;
             existingProduct.Price = product.Price;
             existingProduct.StockQuantity = product.StockQuantity;
-            existingProduct.ImageUrl = product.ImageUrl;
+            existingProduct.Images = product.Images;
             existingProduct.CategoryId = product.CategoryId;
             existingProduct.UnitId = product.UnitId;
             existingProduct.UpdatedAt = DateTime.UtcNow;
